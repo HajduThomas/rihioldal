@@ -53,7 +53,7 @@
             position: relative;
             z-index: 2;
             display: flex;
-            flex-direction: column; /* Függőleges elrendezés: szöveg fent, ikonok lent */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100%;
@@ -63,18 +63,71 @@
             box-sizing: border-box;
         }
 
+        /* FŐ SZÖVEG ANIMÁCIÓJA (Lassú pulzálás/lélegzés) */
         #dynamic-text {
             font-family: 'Sigmar One', sans-serif;
             font-size: 4em;
-            margin: 0 0 20px 0; /* Alsó margó az ikonok elválasztásához */
+            margin: 0 0 20px 0;
             color: white;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: baseline;
+            /* 4 másodperces lassú növekedés és zsugorodás */
+            animation: textPulse 4s infinite ease-in-out;
         }
 
-        /* Közösségi média ikonok konténere */
+        @keyframes textPulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08); /* 8%-os enyhe növekedés */
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* PONTOK ANIMÁCIÓJA (Lassítva 3 másodpercre) */
+        .dots span {
+            display: inline-block;
+            opacity: 0;
+            transform: scale(0.3);
+            animation: dotAnimation 3s infinite ease-in-out;
+        }
+
+        /* Pontok eltolt indítása */
+        .dots span:nth-child(1) {
+            animation-delay: 0.0s;
+        }
+
+        .dots span:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .dots span:nth-child(3) {
+            animation-delay: 1.0s;
+        }
+
+        @keyframes dotAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.3);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+        }
+
+        /* KÖZÖSSÉGI MÉDIA IKONOK */
         .social-links {
             display: flex;
-            gap: 25px; /* Távolság az ikonok között */
+            gap: 25px;
             align-items: center;
         }
 
@@ -84,13 +137,12 @@
         }
 
         .social-link img {
-            width: 45px; /* Ikonok szélessége */
+            width: 45px;
             height: auto;
             display: block;
             filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.5));
         }
 
-        /* Egérráhúzás effekt */
         .social-link:hover {
             transform: scale(1.15);
             opacity: 0.85;
@@ -106,9 +158,10 @@
             <div class="blurred-background"></div>
 
             <div class="bottom-content">
-                <p id="dynamic-text">HAMAROSAN.</p>
+                <p id="dynamic-text">
+                    HAMAROSAN<span class="dots"><span>.</span><span>.</span><span>.</span></span>
+                </p>
                 
-                <!-- Linkelt ikonok -->
                 <div class="social-links">
                     <a href="https://www.youtube.com/@rihigaming1" target="_blank" rel="noopener noreferrer" class="social-link">
                         <img src="yt logo (1).png" alt="YouTube csatorna">
