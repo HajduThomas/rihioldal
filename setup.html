@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup - Rihi Gaming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="bottom-image">
+            <div class="blurred-background"></div>
+
+            <!-- KIJELENTKEZÉS GOMB -->
+            <button class="home-button" onclick="logout()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                </svg>
+                <span>Kijelentkezés</span>
+            </button>
+
+            <!-- PROFIL BLOKK ÉS MENÜ -->
+            <div class="profile-container-700px">
+                <div class="side-group horizontal">
+                    <a href="home.html" class="nav-btn">Rólunk</a>
+                    <a href="setup.html" class="nav-btn">Setup</a>
+                </div>
+
+                <img src="img/profil.jpg" alt="Rihi Gaming Profil" class="profile-pic">
+
+                <div class="side-group horizontal">
+                    <a href="#ertesites" class="nav-btn">Értesítés</a>
+                    
+                    <div class="dropdown">
+                        <button class="nav-btn dropdown-btn">
+                            Szabályzat &#9662;
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#szabalyzat-discord">Discord</a>
+                            <a href="#szabalyzat-twitch">Twitch</a>
+                            <a href="#szabalyzat-youtube">YouTube</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETUP SZÖVEGEK ÉS LAPOZHATÓ GALÉRIÁK -->
+            <div class="setup-content">
+                
+                <!-- 1. RICSI SETUPJA -->
+                <div class="setup-box">
+                    <h2>Ricsi setupja:</h2>
+                    
+                    <!-- Képgaléria (slider) -->
+                    <div class="slider" id="slider-ricsi">
+                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-ricsi', -1)">&#10094;</button>
+                        <div class="slider-track">
+                            <img src="setups/Ricsi/1.jpg" alt="Ricsi Setup 1" class="slide active">
+                            <img src="setups/Ricsi/2.jpg" alt="Ricsi Setup 2" class="slide">
+                            <img src="setups/Ricsi/3.jpg" alt="Ricsi Setup 3" class="slide">
+                            <img src="setups/Ricsi/4.jpg" alt="Ricsi Setup 4" class="slide">
+                            <img src="setups/Ricsi/5.jpg" alt="Ricsi Setup 5" class="slide">
+                            <img src="setups/Ricsi/6.jpg" alt="Ricsi Setup 6" class="slide">
+                            <img src="setups/Ricsi/7.jpg" alt="Ricsi Setup 7" class="slide">
+                        </div>
+                        <button class="slider-btn next-btn" onclick="moveSlide('slider-ricsi', 1)">&#10095;</button>
+                    </div>
+
+                    <p>CPU: Intel® Core™ i7-10700F</p>
+                    <p>GPU: ASUS Dual NVIDIA GeForce RTX 3060 V2 OC</p>
+                    <p>RAM: 32GB DDR4</p>
+                    <p>Alaplap: ASUS PRIME H510M-E R2.0</p>
+                    <p>CPU hüttő: ID-Cooling SE-206-XT</p>
+                    <p>Gépház: X3 MESH - MONTECH</p>
+                    <p>Tárhely:</p>
+                    <ul>
+                        <li>Samsung 840 EVO 120GB</li>
+                        <li>Kingston NV2 1TB</li>
+                        <li>Seagate BarraCuda 2TB HDD</li>
+                    </ul>
+                    <p>Táp: Keep Out FX800 800W</p>
+                    <p>Eszközök:</p>
+                    <ul>
+                        <ul>Monitor:
+                            <li>SAMSUNG 27" Odyssey G3 FHD 165Hz (LS27AG32x)</li>
+                            <li>Samsung LC24F390FHUXEN 24”</li>
+                            <li>Samsung odyssey g5 27’’ (LS27CG552EUXEN) 2K 165Hz</li>
+                            <li>LG 22" Full HD IPS LED Monitor 22MP68VQ-P</li>
+                        </ul>
+                        <li>Egér: iMICE T90</li>
+                        <li>Billentyűzet: Logitech G-PRO</li>
+                        <li>Fejhallgató: Arctis Pro Wireless - SteelSeries</li>
+                        <li>Keverő: FIFINE SC3</li>
+                        <li>Mikrofon:Superlux E205 FEKETE!</li>
+                        <li>Kormány: Logitech G920</li>
+                        <li>Zöld háttér: Elgato-Green Screen</li>
+                        <li>Fényképező: Sony Alpha ZVE10 II</li>
+                        <li>DJI Mic Mini DUO</li>
+                        <li>Capture card: Elgato HD60 X</li>
+                    </ul>
+                </div>
+
+                <!-- 2. MÁRK SETUPJA -->
+                <div class="setup-box">
+                    <h2>Márk setupja:</h2>
+                    
+                    <div class="slider" id="slider-mark">
+                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-mark', -1)">&#10094;</button>
+                        <div class="slider-track">
+                            <img src="img/mark_setup1.jpg" alt="Márk Setup 1" class="slide active" onclick="openModal('slider-mark')">
+                            <img src="img/mark_setup2.jpg" alt="Márk Setup 2" class="slide" onclick="openModal('slider-mark')">
+                            <img src="img/mark_setup3.jpg" alt="Márk Setup 3" class="slide" onclick="openModal('slider-mark')">
+                        </div>
+                        <button class="slider-btn next-btn" onclick="moveSlide('slider-mark', 1)">&#10095;</button>
+                    </div>
+
+                    <p>Itt írhatod le Márk specifikációit.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FELUGRÓ KINAGYÍTÓ MODÁL (POPUP) -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <button class="modal-btn modal-prev" onclick="moveModalSlide(-1)">&#10094;</button>
+        <img class="modal-content" id="modalImage">
+        <button class="modal-btn modal-next" onclick="moveModalSlide(1)">&#10095;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
