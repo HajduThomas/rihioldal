@@ -6,7 +6,125 @@
             font-style: normal;
         }
 
-        body, html {
+        *
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sigmar One';
+        }
+
+        .header
+        {
+            position: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .navbar 
+        {
+            background-image: url('img/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 0.1px solid rgba(255, 255, 255, 0.1);
+            padding: 1px;
+            position: relative;
+        }
+
+        .navbar::before 
+        {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+
+        .nav-container
+        {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-logo
+        {
+            color: #ffffff;
+            font-family: 'Sigmar One', sans-serif;
+            font-size: 1.7rem;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-logo:hover
+        {
+            color: #e0b3ff;
+            text-shadow: 0 0 15px rgba(192, 132, 252, 0.7);
+        }
+
+        .nav-menu
+        {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-link
+        {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            font-size: 1.45rem;
+            font-weight: 500;
+            position: relative;
+            padding: 6px 0;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+            transition: color 0.3s ease;
+            font-family: 'Sigmar One';
+
+        }
+
+        .nav-link::after 
+        {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, #60a5fa, #c084fc);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active 
+        {
+            color: #ffffff;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after 
+        {
+            width: 100%;
+        }
+
+
+        body, html 
+        {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -14,13 +132,15 @@
             background-color: black;
         }
 
-        .container {
+        .container 
+        {
             display: flex;
             flex-direction: column;
             height: 100vh;
         }
 
-        .bottom-image {
+        .bottom-image 
+        {
             width: 100%;
             height: 100%;
             position: relative;
@@ -135,3 +255,121 @@
             transform: scale(1.15);
             opacity: 0.85;
         }
+
+/*Reszponzivitás*/
+
+/* Tablet */
+@media (max-width: 992px) {
+    .nav-container {
+        height: 80px;
+    }
+
+    .nav-logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-menu {
+        gap: 30px;
+    }
+
+    #dynamic-text {
+        font-size: 3.5rem;
+    }
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .nav-container {
+        height: 70px;
+    }
+
+    .nav-logo {
+        font-size: 1.35rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: rgba(15, 0, 30, 0.96);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        width: 100%;
+        text-align: center;
+        transition: left 0.35s ease;
+        padding: 40px 0;
+        gap: 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-link {
+        font-size: 1.35rem;
+    }
+
+    #dynamic-text {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+    }
+
+    .social-link img {
+        width: 42px;
+    }
+
+    .social-links {
+        gap: 22px;
+    }
+}
+
+/* Kis mobil */
+@media (max-width: 480px) {
+    .nav-container {
+        height: 65px;
+    }
+
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+
+    .nav-menu {
+        top: 65px;
+        padding: 35px 0;
+        gap: 26px;
+    }
+
+    #dynamic-text {
+        font-size: 2.2rem;
+        margin-bottom: 18px;
+    }
+
+    .social-link img {
+        width: 38px;
+    }
+
+    .social-links {
+        gap: 18px;
+    }
+}
+
+/* Nagyon kis kijelző */
+@media (max-width: 360px) {
+    #dynamic-text {
+        font-size: 1.9rem;
+    }
+
+    .nav-logo {
+        font-size: 1.1rem;
+    }
+}
