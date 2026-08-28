@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rihi Gaming Elrendezés</title>
-
-    <style>
 
         @font-face {
             font-family: 'Sigmar One';
@@ -143,33 +135,3 @@
             transform: scale(1.15);
             opacity: 0.85;
         }
-    </style>
-</head>
-
-<body>
-
-    <div class="container">
-
-        <div class="bottom-image">
-            <div class="blurred-background"></div>
-
-            <div class="bottom-content">
-                <p id="dynamic-text">
-                    HAMAROSAN<span class="dots"><span>.</span><span>.</span><span>.</span></span>
-                </p>
-                
-                <div class="social-links">
-                    <a href="https://www.youtube.com/@rihigaming1" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <img src="img/yt logo (1).png" alt="YouTube csatorna">
-                    </a>
-                    <a href="https://www.twitch.tv/rihigaming_official" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <img src="img/images (4) (1).png" alt="Twitch csatorna">
-                    </a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-</body>
-</html>
