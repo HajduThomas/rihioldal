@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Sigmar One';
-    src: url('SigmarOne.ttf') format('truetype');
+    src: url('/fonts/SigmarOne.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -267,4 +267,262 @@ body, html {
     color: black;
     border-color: white;
     transform: translateY(-2px);
+}
+
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    margin-bottom: 730px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05); /* Enyhe nagyítás rámutatáskor */
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+}
+
+.welcome-title {
+    font-family: 'Sigmar One', sans-serif;
+    font-size: 2em;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+/* KÖR ALAKÚ KÖZÉPSŐ PROFILKÉP STÍLUSA */
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* Ez kerekíti kör alakúra */
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8); /* Elegáns fehér keret */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Árnyék a kiemeléshez */
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05); /* Enyhe nagyítás rámutatáskor */
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+}
+
+.welcome-title {
+    font-family: 'Sigmar One', sans-serif;
+    font-size: 2em;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+/* ELRENDEZÉS A PROFILKÉP KÖRÜL */
+.profile-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* Távolság a profilkép és a gombok között */
+    margin-bottom: 25px;
+}
+
+/* GOMB CSOPORTOK (BAL ÉS JOBB OLDALON) */
+.side-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* KÖR ALAKÚ PROFILKÉP STÍLUSA */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* NAVIGÁCIÓS GOMBOK STÍLUSA */
+.nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.nav-btn:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+/* LEGÖRDÜLŐ MENÜ STÍLUSOK */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    width: 130px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    z-index: 20;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* PROFIL ÉS GOMBOK KONTÉNERE 700PX-ES MAGASSÁGON */
+.profile-container-700px {
+    position: absolute;
+    top: 10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 10;
+    width: 100%;
+}
+
+/* GOMB CSOPORTOK VÍZSZINTESEN (EGYMÁS MELLETT) */
+.side-group.horizontal {
+    display: flex;
+    flex-direction: row; /* Egymás mellett jelennek meg a gombok */
+    gap: 15px;
+    align-items: center;
+}
+
+/* KÖR ALAKÚ PROFILKÉP STÍLUSA */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* NAVIGÁCIÓS GOMBOK STÍLUSA */
+.nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.nav-btn:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+/* LEGÖRDÜLŐ MENÜ STÍLUSOK */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    width: 120px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    z-index: 20;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }

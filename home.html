@@ -12,16 +12,44 @@
         <div class="bottom-image">
             <div class="blurred-background"></div>
 
-            <button class="home-button" onclick="logout()" style="display: flex;">
+            <!-- KIJELENTKEZÉS GOMB (Bal felső sarok) -->
+            <button class="home-button" onclick="logout()">
                 <svg viewBox="0 0 24 24">
                     <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
                 </svg>
-                Kijelentkezés
+                <span>Kijelentkezés</span>
             </button>
 
-            <div class="bottom-content">
-                <h1>ÜDVÖZÖLLEK A HOME OLDALON!</h1>
+            <!-- 700PX POZÍCIÓJÚ PROFIL BLOKK -->
+            <div class="profile-container-700px">
+                
+                <!-- BAL OLDALI GOMBOK (EGYMÁS MELLETT) -->
+                <div class="side-group horizontal">
+                    <a href="#rolunk" class="nav-btn">Rólunk</a>
+                    <a href="#setup" class="nav-btn">Setup</a>
+                </div>
+
+                <!-- KÖZÉPSŐ PROFILKÉP -->
+                <img src="img/profil.jpg" alt="Rihi Gaming Profil" class="profile-pic">
+
+                <!-- JOBB OLDALI GOMBOK (EGYMÁS MELLETT) -->
+                <div class="side-group horizontal">
+                    <a href="#ertesites" class="nav-btn">Értesítés</a>
+                    
+                    <div class="dropdown">
+                        <button class="nav-btn dropdown-btn">
+                            Szabályzat &#9662;
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#szabalyzat-discord">Discord</a>
+                            <a href="#szabalyzat-twitch">Twitch</a>
+                            <a href="#szabalyzat-youtube">YouTube</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </div>
 
