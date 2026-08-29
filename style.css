@@ -1108,48 +1108,6 @@ html, body {
     z-index: 100; /* Biztosítja, hogy a felső menü és a gombok a videó felett legyenek */
 }
 
-/* --- LEUGRÓ MENÜ (DROPDOWN) STÍLUSOK --- */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* A lenyíló tartalom doboza */
-.dropdown-content {
-    display: none; /* Alapértelmezetten rejtve van */
-    position: absolute;
-    top: 100%; /* Közvetlenül a gomb alá pozicionálja */
-    right: 0;
-    margin-top: 8px;
-    background: rgba(0, 0, 0, 0.9); /* Sötét, jól látható háttér */
-    min-width: 160px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    overflow: hidden;
-    z-index: 9999; /* A legmagasabb réteg, hogy a videólejátszó NE takarja ki */
-}
-
-/* Amikor aktív (rákattintottunk a gombra), megjelenik */
-.dropdown.active .dropdown-content {
-    display: block;
-}
-
-/* Menüpontok stílusa */
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.95rem;
-    transition: background 0.2s;
-}
-
-.dropdown-content a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
 /* --- VIDEÓ KÁRTYA RÉTEGRENDE (Alacsonyabb, mint a menüé) --- */
 .video-sidebar, .video-box {
     position: relative;

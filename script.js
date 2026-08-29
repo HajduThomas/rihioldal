@@ -7,39 +7,34 @@ function closeLoginModal() {
     document.getElementById('errorMsg').style.display = 'none';
 }
 
-function login() 
-{
+function login() {
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
     const errorMsg = document.getElementById('errorMsg');
 
-    if 
-    (user === 'admin' && pass === 'admin') 
-    {
+    if (user === 'admin' && pass === 'admin') {
         window.location.href = 'home.html';
-    } 
-    
-    else 
-    {
+    } else {
         errorMsg.style.display = 'block';
     }
-
 }
-
 
 function logout() {
     window.location.href = 'index.html';
 }
 
 // KÉP LAPOZÓ LOGIKA
+let currentModalSliderId = '';
+
 function moveSlide(sliderId, direction) {
     const slider = document.getElementById(sliderId);
+    if (!slider) return;
+
     const slides = slider.querySelectorAll('.slide');
     let activeIndex = -1;
 
     // Megkeressük az éppen látható képet
-    slides.forEach((slide, index) => 
-        {
+    slides.forEach((slide, index) => {
         if (slide.classList.contains('active')) {
             activeIndex = index;
             slide.classList.remove('active');
@@ -48,35 +43,10 @@ function moveSlide(sliderId, direction) {
 
     // Kiszámoljuk az új kép indexét (körbejáró lapozás)
     let newIndex = activeIndex + direction;
-    if (newIndex >= slides.length) {
-        newIndex = 0;
-    } else if (newIndex < 0) {
-        newIndex = slides.length - 1;
-    }
-
-    // Megjelenítjük az új képet
-    slides[newIndex].classList.add('active');
-}
-
-let currentModalSliderId = '';
-
-// Kis dobozban lévő lapozás
-function moveSlide(sliderId, direction) {
-    const slider = document.getElementById(sliderId);
-    const slides = slider.querySelectorAll('.slide');
-    let activeIndex = -1;
-
-    slides.forEach((slide, index) => {
-        if (slide.classList.contains('active')) {
-            activeIndex = index;
-            slide.classList.remove('active');
-        }
-    });
-
-    let newIndex = activeIndex + direction;
     if (newIndex >= slides.length) newIndex = 0;
     if (newIndex < 0) newIndex = slides.length - 1;
 
+    // Megjelenítjük az új képet
     slides[newIndex].classList.add('active');
     return slides[newIndex];
 }
@@ -99,13 +69,15 @@ function closeModal() {
     document.getElementById('imageModal').style.display = 'none';
 }
 
-// Modálon belüli lapozás (lépteti a hátttérben lévő slidert is)
+// Modálon belüli lapozás (lépteti a háttérben lévő slidert is)
 function moveModalSlide(direction) {
     const newActiveSlide = moveSlide(currentModalSliderId, direction);
-    document.getElementById('modalImage').src = newActiveSlide.src;
+    if (newActiveSlide) {
+        document.getElementById('modalImage').src = newActiveSlide.src;
+    }
 }
 
-// Esc billentyűvel is bezárható
+// Esc billentyűvel való bezárás
 document.addEventListener('keydown', function(event) {
     if (event.key === "Escape") {
         closeModal();
@@ -161,10 +133,10 @@ function setVideoSlide(index) {
     updateVideoSlide();
 }
 
-// ÉRTESÍTÉSEK ADATBÁZISA (Ide tudtok újakat felvenni!)
+// ÉRTESÍTÉSEK ADATBÁZISA
 const notifications = [
     {
-        platform: "youtube", // "youtube" vagy "twitch"
+        platform: "youtube",
         title: "Új YouTube Videó került ki!",
         desc: "Nézzétek meg a legújabb vicces pillanatokat és clipeket!",
         time: "10 perce",
@@ -181,37 +153,44 @@ const notifications = [
     }
 ];
 
-// ÉRTESÍTÉSEK KIRAJZOLÁSA AZ OLDALON
+// INITIALIZÁCIÓ DOM BETÖLTÉSKOR
 document.addEventListener("DOMContentLoaded", () => {
+    // Értesítések kirajzolása az oldalon
     const container = document.getElementById("notificationsList");
-    
     if (container) {
         if (notifications.length === 0) {
             container.innerHTML = "<p style='color: gray;'>Jelenleg nincsenek új értesítések.</p>";
-            return;
-        }
-
-        container.innerHTML = notifications.map(notif => `
-            <a href="${notif.link}" target="_blank" class="notif-card ${notif.platform}">
-                <img src="${notif.icon}" alt="${notif.platform}" class="notif-icon">
-                <div class="notif-content">
-                    <div class="notif-header">
-                        <span class="notif-title">${notif.title}</span>
-                        <span class="notif-badge">${notif.platform}</span>
+        } else {
+            container.innerHTML = notifications.map(notif => `
+                <a href="${notif.link}" target="_blank" class="notif-card ${notif.platform}">
+                    <img src="${notif.icon}" alt="${notif.platform}" class="notif-icon">
+                    <div class="notif-content">
+                        <div class="notif-header">
+                            <span class="notif-title">${notif.title}</span>
+                            <span class="notif-badge">${notif.platform}</span>
+                        </div>
+                        <p class="notif-desc">${notif.desc}</p>
                     </div>
-                    <p class="notif-desc">${notif.desc}</p>
-                </div>
-                <span class="notif-time">${notif.time}</span>
-            </a>
-        `).join('');
+                    <span class="notif-time">${notif.time}</span>
+                </a>
+            `).join('');
+        }
     }
-});
 
-// E-MAIL FELIRATKOZÁS KEZELÉSE
-document.addEventListener("DOMContentLoaded", () => {
+    // Értesítési jelzőbuborék (badge) számláló frissítése
+    const badge = document.getElementById("notifBadge");
+    if (badge) {
+        if (typeof notifications !== 'undefined' && notifications.length > 0) {
+            badge.innerText = notifications.length;
+            badge.style.display = "inline-block";
+        } else {
+            badge.style.display = "none";
+        }
+    }
+
+    // E-mail feliratkozás kezelése
     const subForm = document.getElementById("subscribeForm");
     const subStatus = document.getElementById("subscribeStatus");
-
     if (subForm) {
         subForm.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -220,10 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
             subStatus.style.color = "gold";
             subStatus.innerText = "Feliratkozás küldése...";
 
-            // EmailJS beállítások (Cseréld ki a saját adataidra!)
             const serviceID = "service_xcigsmn";
             const templateID = "template_8ble6kv";
-
             const templateParams = {
                 user_email: email,
                 message: "Új feliratkozó érkezett a Rihi Gaming értesítésekre!"
@@ -242,17 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
         });
     }
-});
 
-// ÉRTESÍTÉSI JELZŐBUBORÉK (BADGE) SZÁMLÁLÓ FRISSÍTÉSE
-document.addEventListener("DOMContentLoaded", () => {
-    const badge = document.getElementById("notifBadge");
-    if (badge) {
-        if (typeof notifications !== 'undefined' && notifications.length > 0) {
-            badge.innerText = notifications.length;
-            badge.style.display = "inline-block";
-        } else {
-            badge.style.display = "none";
-        }
-    }
+   
 });

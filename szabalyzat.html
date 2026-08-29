@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szabályzat - Rihi Gaming</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" type="image/jpg" href="img/profil.jpg">
+</head>
+<body>
+
+    <div class="container">
+        <div class="bottom-image">
+            <div class="blurred-background"></div>
+
+            <!-- KIJELENTKEZÉS GOMB -->
+            <button class="home-button" onclick="logout()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                </svg>
+                <span>Kijelentkezés</span>
+            </button>
+
+            <!-- PROFIL BLOKK (szimmetrikus) -->
+            <div class="profile-container-700px">
+                <div class="side-group horizontal">
+                    <a href="home.html" class="nav-btn">Rólunk</a>
+                    <a href="setup.html" class="nav-btn">Setup</a>
+                </div>
+
+                <a href="https://www.youtube.com/@rihigaming1" target="_blank" class="profile-link">
+                    <img src="img/profil.jpg" alt="Rihi Gaming Profil" class="profile-pic">
+                </a>
+
+                <div class="side-group horizontal">
+                    <a href="ertesito.html" class="nav-btn">Értesítés</a>
+                    <a href="szabalyzat.html" class="nav-btn">Szabályzat</a>
+                </div>
+            </div>
+
+            <!-- FŐ TARTALOM -->
+            <div class="main-layout" style="margin-top: 60px;">
+                <div class="home-content" style="max-width: 900px; width: 100%;">
+                    <div class="info-box" style="text-align: center;">
+                        
+                        <h1 style="font-family: 'Sigmar One', sans-serif; font-size: 3.2rem; margin-bottom: 10px; letter-spacing: 2px;">
+                            Szabályzat
+                        </h1>
+
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 40px;">
+                            Itt találod a közösségünk legfontosabb szabályait.
+                        </p>
+
+                        <!-- Ide jöhetnek a szabályok később -->
+                        <div style="text-align: left; line-height: 1.7;">
+                            <h2>1. Általános szabályok</h2>
+                            <p>Ide írd az általános szabályokat...</p>
+
+                            <h2>2. Discord szabályok</h2>
+                            <p>Ide írd a Discord szabályokat...</p>
+
+                            <h2>3. Stream / Twitch szabályok</h2>
+                            <p>Ide írd a stream szabályokat...</p>
+
+                            <h2>4. YouTube szabályok</h2>
+                            <p>Ide írd a YouTube szabályokat...</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
