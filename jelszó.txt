@@ -1,2 +1,2 @@
 Felhasz: admin
-jelszó: admin
+jelszó: Admin26

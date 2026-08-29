@@ -12,7 +12,7 @@ function login() {
     const pass = document.getElementById('password').value;
     const errorMsg = document.getElementById('errorMsg');
 
-    if (user === 'admin' && pass === 'admin') {
+    if (user === 'admin' && pass === 'Admin26') {
         window.location.href = 'home.html';
     } else {
         errorMsg.style.display = 'block';
