@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Rihi Gaming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="bottom-image">
+            <div class="blurred-background"></div>
+
+            <!-- KIJELENTKEZÉS GOMB (Bal felső sarok) -->
+            <button class="home-button" onclick="logout()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                </svg>
+                <span>Kijelentkezés</span>
+            </button>
+
+            <!-- PROFIL BLOKK -->
+            <div class="profile-container-700px">
+                
+                <!-- BAL OLDALI GOMBOK -->
+                <div class="side-group horizontal">
+                    <a href="#rolunk" class="nav-btn">Rólunk</a>
+                    <a href="setup.html" class="nav-btn">Setup</a>
+                </div>
+
+                <!-- KÖZÉPSŐ PROFILKÉP -->
+                <a href="https://www.youtube.com/@rihigaming1" target="_blank" class="profile-link">
+                    <img src="img/profil.jpg" alt="Rihi Gaming Profil" class="profile-pic">
+                </a>
+
+                <!-- JOBB OLDALI GOMBOK -->
+                <div class="side-group horizontal">
+                    <a href="ertesito.html" class="nav-btn notif-btn">Értesítés</a>
+                    
+                    <div class="dropdown">
+                        <button class="nav-btn dropdown-btn">
+                            Szabályzat &#9662;
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#szabalyzat-discord">Discord</a>
+                            <a href="#szabalyzat-twitch">Twitch</a>
+                            <a href="#szabalyzat-youtube">YouTube</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FŐ TARTALOM -->
+            <div class="main-layout">
+                
+                <!-- BAL OLDALI TARTALOM -->
+                <div class="home-content">
+                    <div class="info-box" id="rolunk">
+                        <h2>Rólunk:</h2>
+                        <p>gyökerek vagyunk xddd</p>
+                    </div>
+
+                    <div class="social-box" style="margin-top: 20px;">
+                        <h2>Kövess minket!</h2>
+                        <div class="social-links">
+                            <a href="https://www.youtube.com/@rihigaming1" target="_blank" class="social-btn youtube">
+                                <img src="img/ytlogo.png" alt="YouTube" class="social-icon">
+                                <span>YouTube</span>
+                            </a>
+                            <a href="https://www.twitch.tv/rihigaming_official" target="_blank" class="social-btn twitch">
+                                <img src="img/twlogo.png" alt="Twitch" class="social-icon">
+                                <span>Twitch</span>
+                            </a>
+                            <a href="https://discord.gg/bHjY3qZRQ2" target="_blank" class="social-btn discord">
+                                <img src="img/dclogo.png" alt="Discord" class="social-icon">
+                                <span>Discord</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JOBB OLDALI VIDEÓ LEJÁTSZÓ KÁRTYA -->
+                <div class="video-sidebar">
+                    <div class="video-box">
+                        <h2>Clipek</h2>
+
+                        <div class="video-slider">
+                            <button class="video-btn v-prev" onclick="moveVideoSlide(-1)">&#10094;</button>
+                            
+                            <div class="video-track-container">
+                                <div class="video-track" id="videoTrack">
+                                    <div class="video-slide">
+                                        <video controls preload="metadata">
+                                            <source src="videos/1.mp4" type="video/mp4">
+                                            A böngésződ nem támogatja a videót.
+                                        </video>
+                                    </div>
+                                    <div class="video-slide">
+                                        <video controls preload="metadata">
+                                            <source src="videos/2.mp4" type="video/mp4">
+                                            A böngésződ nem támogatja a videót.
+                                        </video>
+                                    </div>
+                                    <div class="video-slide">
+                                        <video controls preload="metadata">
+                                            <source src="videos/3.mp4" type="video/mp4">
+                                            A böngésződ nem támogatja a videót.
+                                        </video>
+                                    </div>
+                                    <div class="video-slide">
+                                        <video controls preload="metadata">
+                                            <source src="videos/4.mp4" type="video/mp4">
+                                            A böngésződ nem támogatja a videót.
+                                        </video>
+                                    </div>
+                                    <div class="video-slide">
+                                        <video controls preload="metadata">
+                                            <source src="videos/5.mp4" type="video/mp4">
+                                            A böngésződ nem támogatja a videót.
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="video-btn v-next" onclick="moveVideoSlide(1)">&#10095;</button>
+                        </div>
+
+                        <div class="video-dots" id="videoDots">
+                            <span class="dot active" onclick="setVideoSlide(0)"></span>
+                            <span class="dot" onclick="setVideoSlide(1)"></span>
+                            <span class="dot" onclick="setVideoSlide(2)"></span>
+                            <span class="dot" onclick="setVideoSlide(3)"></span>
+                            <span class="dot" onclick="setVideoSlide(4)"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVÍTÁS: Győződj meg róla, hogy a script.js be van töltve -->
+    <script src="script.js"></script>
+</body>
+</html>

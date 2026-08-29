@@ -1,0 +1,1489 @@
+@font-face {
+    font-family: 'Sigmar One';
+    src: url('/fonts/SigmarOne.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden; /* Vízszintes túlcsordulás tiltása */
+    overflow-y: auto;   /* Függőleges GÖRGETÉS ENGEDÉLYEZÉSE */
+}
+
+/* Ha a container vagy bottom-image elemednek fix magassága van (100vh), töröld a height: 100vh-t, vagy módosítsd min-height-re: */
+.container, .bottom-image {
+    min-height: 101vh;
+    height: auto; /* Hogy a tartalom növelhesse a magasságot */
+}
+
+.blurred-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/hatter.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px);
+    transform: scale(1.1);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bottom-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#dynamic-text {
+    font-family: 'Sigmar One', sans-serif;
+    font-size: 4em;
+    margin: 0 0 20px 0;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: baseline;
+    animation: textPulse 4s infinite ease-in-out;
+}
+
+@keyframes textPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+.dots span {
+    display: inline-block;
+    opacity: 0;
+    transform: scale(0.3);
+    animation: dotAnimation 3s infinite ease-in-out;
+}
+
+.dots span:nth-child(1) { animation-delay: 0.0s; }
+.dots span:nth-child(2) { animation-delay: 0.5s; }
+.dots span:nth-child(3) { animation-delay: 1.0s; }
+
+@keyframes dotAnimation {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 1; transform: scale(1.3); }
+    100% { opacity: 0; transform: scale(0.3); }
+}
+
+.social-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.social-link {
+    display: inline-block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-link img {
+    width: 45px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+.social-link:hover {
+    transform: scale(1.15);
+    opacity: 0.85;
+}
+
+.admin-login-trigger {
+    position: absolute;
+    top: 30px; 
+    left: 30px; 
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.admin-login-trigger svg {
+    width: 16px;
+    height: 16px;
+    fill: rgba(255, 255, 255, 0.9);
+}
+
+.admin-login-trigger:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+.admin-login-trigger:hover svg {
+    fill: black;
+}
+
+/* BEJELENTKEZŐ ABLAK (MODAL) */
+.login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    position: relative;
+    background: rgba(20, 20, 20, 0.9);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+    text-align: center;
+    width: 280px;
+    color: white;
+}
+
+.login-box h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.login-box .login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.login-box .login-btn:hover {
+    background-color: #ddd;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: white;
+}
+
+.error-message {
+    color: #ff5555;
+    font-size: 0.8em;
+    margin-top: 10px;
+    display: none;
+}
+
+.home-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-decoration: none;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.home-button svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.home-button:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    margin-bottom: 730px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05); /* Enyhe nagyítás rámutatáskor */
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+}
+
+.welcome-title {
+    font-family: 'Sigmar One', sans-serif;
+    font-size: 2em;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+/* KÖR ALAKÚ KÖZÉPSŐ PROFILKÉP STÍLUSA */
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* Ez kerekíti kör alakúra */
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8); /* Elegáns fehér keret */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Árnyék a kiemeléshez */
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05); /* Enyhe nagyítás rámutatáskor */
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+}
+
+.welcome-title {
+    font-family: 'Sigmar One', sans-serif;
+    font-size: 2em;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+/* ELRENDEZÉS A PROFILKÉP KÖRÜL */
+.profile-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* Távolság a profilkép és a gombok között */
+    margin-bottom: 25px;
+}
+
+/* GOMB CSOPORTOK (BAL ÉS JOBB OLDALON) */
+.side-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* KÖR ALAKÚ PROFILKÉP STÍLUSA */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* NAVIGÁCIÓS GOMBOK STÍLUSA */
+.nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.nav-btn:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+/* LEGÖRDÜLŐ MENÜ STÍLUSOK */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    width: 130px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    z-index: 20;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* PROFIL ÉS GOMBOK KONTÉNERE 700PX-ES MAGASSÁGON */
+.profile-container-700px {
+    position: absolute;
+    top: 10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 10;
+    width: 100%;
+}
+
+/* GOMB CSOPORTOK VÍZSZINTESEN (EGYMÁS MELLETT) */
+.side-group.horizontal {
+    display: flex;
+    flex-direction: row; /* Egymás mellett jelennek meg a gombok */
+    gap: 15px;
+    align-items: center;
+}
+
+/* KÖR ALAKÚ PROFILKÉP STÍLUSA */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* NAVIGÁCIÓS GOMBOK STÍLUSA */
+.nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.nav-btn:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+/* LEGÖRDÜLŐ MENÜ STÍLUSOK */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    width: 120px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    z-index: 20;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* SETUP TARTALOM STÍLUSA */
+.setup-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 180px; /* Helyet hagy a fent lévő profil blokknak */
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.setup-box {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    width: 320px;
+    color: white;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.setup-box h2 {
+    margin-top: 0;
+    font-size: 1.4em;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 8px;
+}
+
+/* SETUP KONTÉNER ÉS KÁRTYÁK */
+.setup-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 180px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.setup-box {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    width: 350px;
+    color: white;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.setup-box h2 {
+    margin-top: 0;
+    font-size: 1.4em;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 8px;
+}
+
+/* LAPOZHATÓ KÉPGALÉRIA (SLIDER) */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin: 15px 0;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.slider-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* LAPOZÓ GOMBOK (JOBB ÉS BAL NYILAK) */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 18px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 5;
+    transition: background 0.3s ease;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+.prev-btn {
+    left: 8px;
+}
+
+.next-btn {
+    right: 8px;
+}
+
+/* LAPOZHATÓ KÉPGALÉRIA (SLIDER) FIXÁLÁSA */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin: 15px 0;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.slider-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    cursor: pointer; /* Kéz kurzor a kattinthatóság jelzésére */
+}
+
+.slide.active {
+    display: block;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 18px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 5;
+    transition: background 0.3s ease;
+}
+
+.slider-btn:hover {
+    background: white;
+    color: black;
+}
+
+.prev-btn { left: 8px; }
+.next-btn { right: 8px; }
+
+/* KINAGYÍTÓ MODÁL (MODAL) STÍLUSA */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    object-fit: contain;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close-modal:hover {
+    color: #bbb;
+}
+
+.modal-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 1001;
+    transition: background 0.3s;
+}
+
+.modal-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+.modal-prev { left: 30px; }
+.modal-next { right: 30px; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    /* overflow: hidden;  <-- HA EZ BENNE VAN, TÖRÖLD KI VAGY ÍRD ÁT: */
+    overflow-y: auto;  /* Ez engedélyezi a függőleges görgetést! */
+}
+
+/* ELRENDEZÉS (FŐ LAYOUT) */
+.main-layout {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    margin-top: 180px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.home-content {
+    flex: 1;
+    max-width: 700px;
+}
+
+.info-box {
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+/* JOBB OLDALI VIDEÓ LEJÁTSZÓ STÍLUSAI */
+.video-sidebar {
+    width: 360px;
+    max-width: 100%;
+    position: sticky;
+    top: 100px;
+}
+
+.video-box {
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.video-box h2 {
+    margin-top: 0;
+    font-size: 1.4em;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 8px;
+}
+
+.video-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 15px 0 10px 0;
+}
+
+.video-track-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #000;
+}
+
+/* CSÚSZÁS ANIMÁCIÓ */
+.video-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+.video-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.video-slide video {
+    width: 100%;
+    height: 220px;
+    display: block;
+    object-fit: cover;
+}
+
+/* NYÍL GOMBOK STÍLUSA */
+.video-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 16px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 5;
+    transition: all 0.3s;
+}
+
+.video-btn:hover {
+    background: white;
+    color: black;
+}
+
+.v-prev { left: 5px; }
+.v-next { right: 5px; }
+
+/* PÖTTYÖK STÍLUSA */
+.video-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #fff;
+    transform: scale(1.2);
+}
+
+.social-box {
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+}
+
+.youtube { background-color: #ff0000; }
+.twitch { background-color: #9146ff; }
+.discord { background-color: #5865f2; }
+
+.social-box {
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Távolság az ikon és a szöveg között */
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Az ikonok méretezése */
+.social-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+}
+
+.youtube { background-color: #ff0000; }
+.twitch { background-color: #9146ff; }
+.discord { background-color: #5865f2; }
+
+/* --- NÖVELT MÉRETŰ VIDEÓ SIDEBAR ÉS KÁRTYA --- */
+
+/* A videó szekció konténere (szélesebb lett) */
+.video-sidebar {
+    width: 100%;
+    max-width: 650px; /* Megnövelt maximális szélesség (korábban pl. 400-450px volt) */
+    margin: 0 auto;
+}
+
+/* A kártya doboza */
+.video-box {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.video-box h2 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+/* Slider elrendezése */
+.video-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* A videók konténere (magasabb és szélesebb lett, 16:9 arányhoz igazítva) */
+.video-track-container {
+    width: 100%;
+    height: 340px; /* Megnövelt magasság a nagyobb videóknak */
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.video-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+.video-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Maga a videó elem */
+.video-slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Kitölti a rendelkezésre álló keretet */
+    border-radius: 12px;
+    background-color: #000;
+}
+
+/* Léptető gombok (nagyobbak és jobban kilátszanak) */
+.video-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 22px;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.video-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.v-prev {
+    left: 10px;
+}
+
+.v-next {
+    right: 10px;
+}
+
+/* Alsó indikátor pöttyök */
+.video-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.video-dots .dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.video-dots .dot.active,
+.video-dots .dot:hover {
+    background-color: #fff;
+    transform: scale(1.2);
+}   
+
+/* --- PROFIL ÉS NAVIGÁCIÓS KONTÉNER (Magas rétegrend) --- */
+.profile-container-700px {
+    position: relative;
+    z-index: 100; /* Biztosítja, hogy a felső menü és a gombok a videó felett legyenek */
+}
+
+/* --- LEUGRÓ MENÜ (DROPDOWN) STÍLUSOK --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* A lenyíló tartalom doboza */
+.dropdown-content {
+    display: none; /* Alapértelmezetten rejtve van */
+    position: absolute;
+    top: 100%; /* Közvetlenül a gomb alá pozicionálja */
+    right: 0;
+    margin-top: 8px;
+    background: rgba(0, 0, 0, 0.9); /* Sötét, jól látható háttér */
+    min-width: 160px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    z-index: 9999; /* A legmagasabb réteg, hogy a videólejátszó NE takarja ki */
+}
+
+/* Amikor aktív (rákattintottunk a gombra), megjelenik */
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+/* Menüpontok stílusa */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- VIDEÓ KÁRTYA RÉTEGRENDE (Alacsonyabb, mint a menüé) --- */
+.video-sidebar, .video-box {
+    position: relative;
+    z-index: 1; /* Alacsonyabb rétegrend, így a menü fölé tud lógni */
+}
+
+/* --- FŐ ELRENDEZÉS: EGY VONALBA IGAZÍTÁS --- */
+.main-layout {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* EZ igazítja a tetejüket pontosan egy vonalba */
+    gap: 30px;
+    margin-top: 40px; /* Szükség szerint állítható felső távolság a profiltól */
+    padding: 20px;
+    width: 95%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
+
+/* BAL OLDAL (Szöveg doboz) */
+.home-content {
+    flex: 1 1 550px;
+    max-width: 700px;
+    width: 100%;
+    margin-top: 0; /* Biztosítjuk, hogy ne tolja semmi lefele */
+}
+
+/* JOBB OLDAL (Videó lejátszó) */
+.video-sidebar {
+    flex: 1 1 500px;
+    max-width: 650px;
+    width: 100%;
+    margin-top: 0; /* Nullázzuk a felső margót, hogy egy szintben maradjon */
+}
+
+/* A belső kártyáknál is nullázzuk a felső margókat */
+.info-box, .video-box {
+    margin-top: 0;
+}
+
+/* 1. Betűtípus betöltése a helyi mappából */
+@font-face {
+    font-family: 'Sigmar One Local';
+    src: url('fonts/SigmarOne.ttf') format('truetype');
+    /* Ha .woff2 formátumod van, akkor: format('woff2'); */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 2. Alkalmazás a h1 és h2 elemekre */
+h1, h2 {
+    font-family: 'Sigmar One Local', sans-serif;
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+/* --- ÉRTESÍTÉSEK OLDAL STÍLUSAI --- */
+.notifications-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 20px;
+    width: 95%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.notifications-box {
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    color: white;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    text-align: center;
+}
+
+.notifications-box h2 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.notif-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* KATTINTHATÓ BUBORÉK STÍLUS */
+.notif-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white;
+    text-align: left;
+    transition: all 0.25s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effekt (ha fölé viszed az egeret) */
+.notif-card:hover {
+    transform: translateY(-3px) scale(1.01);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* YouTube & Twitch egyedi szegély színek */
+.notif-card.youtube {
+    border-left: 5px solid #ff0000;
+}
+
+.notif-card.twitch {
+    border-left: 5px solid #9146ff;
+}
+
+.notif-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.notif-content {
+    flex-grow: 1;
+}
+
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.notif-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.notif-time {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.notif-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+.notif-badge {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.youtube .notif-badge {
+    background: #ff0000;
+    color: white;
+}
+
+.twitch .notif-badge {
+    background: #9146ff;
+    color: white;
+}
+
+/* --- FELIRATKOZÁSI DOBOZ STÍLUSAI --- */
+.subscribe-box {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.subscribe-box h3 {
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+}
+
+.subscribe-box p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 15px;
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.subscribe-form input[type="email"] {
+    flex-grow: 1;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.subscribe-form input[type="email"]:focus {
+    border-color: #9146ff;
+}
+
+.subscribe-btn {
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #ff0000, #9146ff);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.subscribe-btn:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+.subscribe-status {
+    margin-top: 12px !important;
+    font-weight: bold;
+}
+
+.setup-container {
+    display: flex;
+    align-items: stretch; /* Minden kártya felveszi a legmagasabb kártya méretét */
+    gap: 20px;
+}
+
+/* KÁRTYÁK GÖRGETHETŐSÉGÉNEK ÉS MAGASSÁGÁNAK JAVÍTÁSA */
+.setup-card, .card, .spec-card, [class*="card"] {
+    height: auto !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+}
+
+/* ÁTTETSZŐ TAKARÓ RÉTEGEK ELTÜNTETÉSE */
+.setup-card::after, .card::after, .spec-card::after {
+    display: none !important;
+}
+
+/* 1. GÖRGETÉS ÉS ALAP HÁTTÉR FIXÁLÁSA */
+html, body {
+    min-height: 100vh !important;
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    background-color: #121212 !important; /* Ha bárhol rés keletkezne, ez sötét marad, ne fehér */
+}
+
+/* 2. HÁTTÉRKÉP RÖGZÍTÉSE (ÍGY GÖRGETÉSNÉL IS VÉGIG OTT MARAD) */
+.container, .bottom-image {
+    min-height: 100vh !important;
+    height: auto !important;
+    background-attachment: fixed !important; /* A kép a képernyőhöz ragad */
+    background-size: cover !important;
+    position: relative !important;
+}
+
+/* 3. A BLUR EFFEKT NYÚJTÁSA */
+.blurred-background {
+    position: fixed !important; /* A kijelzőhöz rögzítjük az életlenítést is */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+}
+
+/* 4. A TARTALOM A HÁTTÉR FELETT LEGYEN */
+.profile-container-700px, 
+.main-layout, 
+.setup-container, 
+[class*="container"] {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* 5. KÁRTYÁK NYÚJTÁSA */
+div[class*="card"], .info-box {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* MODERN BETŰTÍPUS MINDENNEK, KIVÉVE A H1 ÉS H2 CÍMSOROKAT */
+body, p, a, button, span, li, div, input {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+/* Megengedjük a profil blokknak és a fejléccel egy vonalban lévő elemeknek, hogy kilógjanak */
+.profile-container-700px,
+.bottom-image,
+.container {
+    overflow: visible !important;
+}
+
+/* Biztosítjuk, hogy a lenyíló menü minden felett lebegjen */
+.dropdown {
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+.dropdown-content {
+    position: absolute !important;
+    z-index: 99999 !important;
+}

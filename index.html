@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Várakozó</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <button id="adminLoginTrigger" class="admin-login-trigger" onclick="openLoginModal()">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+        <span>Bejelentkezés</span>
+    </button>
+
+    <div id="loginModal" class="login-modal">
+        <div class="login-box">
+            <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+            <h3>ADMIN BEJELENTKEZÉS</h3>
+            <input type="text" id="username" placeholder="Felhasználónév">
+            <input type="password" id="password" placeholder="Jelszó">
+            <button class="login-btn" onclick="login()">Bejelentkezés</button>
+            <div id="errorMsg" class="error-message">Hibás név vagy jelszó!</div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="bottom-image">
+            <div class="blurred-background"></div>
+
+            <div class="bottom-content">
+                <p id="dynamic-text">
+                    HAMAROSAN<span class="dots"><span>.</span><span>.</span><span>.</span></span>
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@rihigaming1" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <img src="img/ytlogo.png" alt="YouTube csatorna">
+                    </a>
+                    <a href="https://www.twitch.tv/rihigaming_official" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <img src="img/twlogo.png" alt="Twitch csatorna">
+                    </a>
+                    <a href="https://discord.gg/pZVNVjCpn" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <img src="img/dclogo.png" alt="Discord szerver">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
