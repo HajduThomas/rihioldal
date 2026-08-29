@@ -14,18 +14,16 @@
         <div class="bottom-image">
             <div class="blurred-background"></div>
 
-            <!-- KIJELENTKEZÉS GOMB -->
-            <button class="home-button" onclick="logout()">
-                <svg viewBox="0 0 24 24">
-                    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+            <a href="home.html" class="home-button" style="text-decoration: none;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
                 </svg>
-                <span>Kijelentkezés</span>
-            </button>
+                <span>Vissza a Főoldalra</span>
+            </a>
 
-            <!-- PROFIL BLOKK (szimmetrikus) -->
             <div class="profile-container-700px">
                 <div class="side-group horizontal">
-                    <a href="home.html" class="nav-btn">Rólunk</a>
+                    <a href="home.html#rolunk" class="nav-btn">Rólunk</a>
                     <a href="setup.html" class="nav-btn">Setup</a>
                 </div>
 
@@ -34,88 +32,93 @@
                 </a>
 
                 <div class="side-group horizontal">
-                    <a href="ertesito.html" class="nav-btn">Értesítés</a>
-                    <a href="szabalyzat.html" class="nav-btn">Szabályzat</a>
+                    <a href="ertesito.html" class="nav-btn notif-btn">Értesítés</a>
+                    <a href="szabalyzat.html" class="nav-btn active">Szabályzat</a>
                 </div>
             </div>
 
-            <!-- FŐ TARTALOM -->
-            <div class="main-layout" style="margin-top: 60px;">
-                <div class="home-content" style="max-width: 900px; width: 100%;">
-                    <div class="info-box" style="text-align: center;">
-                        
-                        <h1 style="font-family: 'Sigmar One', sans-serif; font-size: 3.2rem; margin-bottom: 10px; letter-spacing: 2px;">
-                            Szabályzat
-                        </h1>
+            <div class="rules-wrapper">
+                <div class="info-box" id="szabalyzat-youtube">
+                    <h2 class="rule-title"><u>
+                        <img src="img/ytlogo.png" alt="YouTube" class="rule-icon">
+                        YouTube Szabályzat
+                    </h2></u>
+                    
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
 
-                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 40px;">
-                            Itt találod a közösségünk legfontosabb szabályait.
-                        </p>
-
-                        <!-- Ide jöhetnek a szabályok később -->
-                        <div style="text-align: left; line-height: 1.7;">
-                            <h2>1. Általános szabályok</h2>
-                            <p>Ide írd az általános szabályokat...</p>
-
-                            <h2>2. Discord szabályok</h2>
-                            <p>
-                                1. NSFW (felnőtt tartalom) küldése csak akkor engedélyezett ha nem olyan durva (pornó) és csak a meme csatornába engedélyezett ilyen tartalom küldése! <br><br>
-
-                                2. A szöveges csatornákat illetve a hangcsatornákat rendeltetésszerűen lehet használni!
-                                hívásba ha lehet ne b@sszuk fel a tagokat a folyamatos sounboard használatával!
-                                <br><br>
-                                3."Ragelni" csak a rage szobában lehet, itt káromkodásra és spammelésre gondolunk!
-                                <br><br>
-                                Tagszidás!
-                                <br>4.Más tagok szidása TILOS!
-                                <br><br>
-
-                                5. Trágár beszéd <br>
-                                A trágár beszéd addig eltűrt, amíg az másokat 
-                                nem sért meg, és nem rombolja a közösséget. 
-                                Ha ez megtörténik, már büntetjük.
-                                <br><br>
-
-                                6. Toxikus viselkedés <br>
-                                Szeretnénk, ha a közösségben mindenki jól érezné magát. 
-                                A kiközösítésnek, toxikus magatartásnak itt nincs helye, és keményen büntetjük!
-                                <br><br>
-
-                                7.Büntetések <br>
-
-                                A szerver moderátorai fenntartják a jogot, hogy
-                                 a szerverről bárkit kitiltsanak, kirúgjanak, vagy 
-                                 némítsanak aki a közösséget rombolja. Természetesen igyekszünk mindenkivel
-                                igazságosan és megfelelően eljárni. 
-                                A büntetések kijátszása alt accounttal tilos, és azonnali kitiltás jár érte, ha kiderül. 
-                                A szabályzat nem ismerete nem mentesít a büntetés alól!
-                                <br><br>
-
-                                8. A magasabb rangba lévő tagok ne éljenek 
-                                vissza a hatalmukkal!  
-                                Ha esetleg a botok hibásak akkor nem kitörölni 
-                                kell hanem a "panasz" szobába írjátok le panaszotokat, és mindenki 
-                                más ha panasza van ne tartsa magába!
-
-                                <br><br>
-                                9. Hirdtetés <br>
-                                A hirdetés csak a <b>@Tulaj👑</b> <b>@Tulaj helyettes</b> <b>@⚔️Adminisztrátor</b> <b>@🛡️Manager</b> <b> @🔰Moderátor</b> engedélyezett!
-
-                            </p>
-
-                            <h2>3. Stream / Twitch szabályok</h2>
-                            <p>Ide írd a stream szabályokat...</p>
-
-                            <h2>4. YouTube szabályok</h2>
-                            <p>Ide írd a YouTube szabályokat...</p>
-                        </div>
-
+                    <div class="collapsible-content">
+                        <ul>
+                            <li></li>
+                        </ul>
                     </div>
+
+                    <button class="toggle-btn" onclick="toggleRule(this)">
+                        <span class="btn-text">Összes szabályzat mutatása</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+
+                <div class="info-box" id="szabalyzat-twitch">
+                    <h2 class="rule-title"><u>
+                        <img src="img/twlogo.png" alt="Twitch" class="rule-icon">
+                        Twitch Szabályzat
+                    </h2></u>
+                    
+                    <ul>
+                        <li>Kövesd a Twitch Közösségi Irányelveit!</li>
+                        <li>Kerüld a backseat gaminget!</li>
+                    </ul>
+
+                    <div class="collapsible-content">
+                        <ul>
+                            <li>Ne zaklasd a nézőket és a streamereket!</li>
+                            <li>Ne kergess spoiler-eket a játékok alatt!</li>
+                            <li>Ne kérj VIP vagy Mod rangot a chatben!</li>
+                        </ul>
+                    </div>
+
+                    <button class="toggle-btn" onclick="toggleRule(this)">
+                        <span class="btn-text">Összes szabályzat mutatása</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+
+                <div class="info-box" id="szabalyzat-discord">
+                    <h2 class="rule-title"><u>
+                        <img src="img/dclogo.png" alt="Discord" class="rule-icon">
+                        Discord Szabályzat
+                    </h2></u>
+                    
+                    <ul>
+                        <li>NSFW (felnőtt tartalom) küldése csak akkor engedélyezett ha nem olyan durva (pornó) és csak a meme csatornába engedélyezett ilyen tartalom küldése!</li>
+                        <li>A szöveges csatornákat illetve a hangcsatornákat rendeltetésszerűen lehet használni! Hívásba ha lehet ne b@sszuk fel a tagokat a folyamatos sounboard használatával!</li>
+                    </ul>
+
+                    <div class="collapsible-content">
+                        <ul>
+                            <li>"Ragelni" csak a rage szobában lehet, itt káromkodásra és spammelésre gondolunk!</li>
+                            <li>Tagszidás! Más tagok szidása TILOS!</li>
+                            <li>Trágár beszéd! A trágár beszéd addig eltűrt, amíg az másokat nem sért meg, és nem rombolja a közösséget. Ha ez megtörténik, már büntetjük.</li>
+                            <li>Toxikus viselkedés! A trágár beszéd addig eltűrt, amíg az másokat nem sért meg, és nem rombolja a közösséget. Ha ez megtörténik, már büntetjük.</li>
+                            <li>Büntetések! A szerver moderátorai fenntartják a jogot, hogy a szerverről bárkit kitiltsanak, kirúgjanak, vagy némítsanak aki a közösséget rombolja. Természetesen igyekszünk mindenkivel igazságosan és megfelelően eljárni. A büntetések kijátszása alt accounttal tilos, és azonnali kitiltás jár érte, ha kiderül. A szabályzat nem ismerete nem mentesít a büntetésalól!</li>
+                            <li>A magasabb rangba lévő tagok ne éljenek vissza a hatalmukkal! Ha esetleg a botok hibásak akkor nem kitörölni kell hanem a "panasz" szobába írjátok le panaszotokat, és mindenki más ha panasza van ne tartsa magába!</li>
+                            <li>Hirdtetés! A hirdetés csak a @Tulaj @Tulajhelyettes @Adminisztrátor @Manager @Moderátor engedélyezett!</li>
+                        </ul>
+                    </div>
+
+                    <button class="toggle-btn" onclick="toggleRule(this)">
+                        <span class="btn-text">Összes szabályzat mutatása</span>
+                        <span class="arrow">▼</span>
+                    </button>
                 </div>
             </div>
 
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>

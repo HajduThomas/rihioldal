@@ -1446,3 +1446,107 @@ body, p, a, button, span, li, div, input {
     position: absolute !important;
     z-index: 99999 !important;
 }
+
+/* SZABÁLYZAT OLDAL STÍLUSAI */
+
+.rules-wrapper {
+    max-width: 800px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rule-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rule-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* Lecsúszó animáció a rejtett tartalomnak */
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease-in-out, margin-top 0.3s ease;
+}
+
+.collapsible-content.active {
+    opacity: 1;
+    margin-top: 10px;
+}
+
+/* Lenyitó gomb és nyilak animációja */
+.toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.toggle-btn:active {
+    transform: scale(0.97);
+}
+
+.toggle-btn .arrow {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.toggle-btn.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* @ említések kiemelése */
+.mention {
+    color: #ff4757;                 /* A szöveg színe (pl. piros/rózsaszín) */
+    background: rgba(255, 71, 87, 0.15); /* Halvány háttérszín a szöveg mögött */
+    padding: 2px 6px;               /* Belső margó a szép megjelenésért */
+    border-radius: 4px;             /* Lekerekített sarkok */
+    font-weight: bold;              /* Félkövér betűtípus */
+    display: inline-block;
+}
+
+/* @ említések kiemelése */
+.mention {
+    color: #ff4757;                 /* Szöveg színe */
+    background: rgba(255, 71, 87, 0.15); /* Halvány piros/rózsaszín háttér */
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Emojik kiemelése */
+.emoji-highlight {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15); /* Halvány kiemelő háttér */
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin: 0 2px;
+    font-size: 1.1em; /* Kicsit nagyobb méret, hogy jobban látszódjon */
+    transition: transform 0.2s ease;
+}
+
+/* Ha fölé viszed az egeret, az emoji kicsit megnő */
+.emoji-highlight:hover {
+    transform: scale(1.2);
+}

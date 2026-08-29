@@ -222,3 +222,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
    
 });
+
+// Szabályzatok animált lenyitása és becsukása
+function toggleRule(btn) {
+    const box = btn.parentElement;
+    const content = box.querySelector('.collapsible-content');
+    const btnText = btn.querySelector('.btn-text');
+
+    if (content.classList.contains('active')) {
+        // Becsukás animációja
+        content.style.maxHeight = '0px';
+        content.classList.remove('active');
+        btn.classList.remove('active');
+        btnText.textContent = 'Összes szabályzat mutatása';
+    } else {
+        // Lenyitás animációja (kiszámolja a pontos magasságot)
+        content.classList.add('active');
+        btn.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        btnText.textContent = 'Kevesebb mutatása';
+    }
+}
+
+// @ jellel kezdődő szavak és Emojik automatikus kiemelése
+document.addEventListener("DOMContentLoaded", function() {
+    const ruleBoxes = document.querySelectorAll('.info-box p, .info-box li');
+    
+    // Emojik felismerésére szolgáló regex minta
+    const emojiRegex = /(\p{Extended_Pictographic}|\p{Emoji_Component})/gu;
+
+    ruleBoxes.forEach(element => {
+        let html = element.innerHTML;
+
+        // 1. Megkeresi a @ szavakat (pl. @rihigaming) és kiemeli
+        html = html.replace(
+            /(^|\s)(@[a-zA-Z0-9_áéíóöőúüűÁÉÍÓÖŐÚÜŰ]+)/g, 
+            '$1<span class="mention">$2</span>'
+        );
+
+        // 2. Megkeresi az emojikat és bevonja a kiemelő span-be
+        html = html.replace(
+            emojiRegex,
+            '<span class="emoji-highlight">$1</span>'
+        );
+
+        element.innerHTML = html;
+    });
+});
