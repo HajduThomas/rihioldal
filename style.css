@@ -585,7 +585,8 @@ html, body {
 }
 
 /* LAPOZHATÓ KÉPGALÉRIA (SLIDER) */
-.slider {
+.slider 
+{
     position: relative;
     width: 100%;
     height: 200px;

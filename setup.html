@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Setup - Rihi Gaming</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" type="image/jpg" href="img/profil.jpg">
 </head>
 <body>
 
@@ -159,6 +161,56 @@
                     </ul>
                 </div>
 
+
+
+                <!-- 3. Tomi SETUPJA -->
+                <div class="setup-box">
+                    <h2>Tomi setupja:</h2>
+                    
+                    <div class="slider" id="slider-tomi">
+                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-tomi', -1)">&#10094;</button>
+                        <div class="slider-track">
+                            <img src="setups/Tomi/1 kep.jpg" alt="KaVRMc Setup 1" class="slide active" onclick="openModal('slider-tomi')">
+                            <img src="setups/Tomi/2 kep.jpg" alt="KaVRMc Setup 2" class="slide" onclick="openModal('slider-tomi')">
+                            <img src="setups/Tomi/3 kep.jpg" alt="KaVRMc Setup 3" class="slide" onclick="openModal('slider-tomi')">
+                            <img src="setups/Tomi/4 kep.jpg" alt="KaVRMc Setup 4" class="slide" onclick="openModal('slider-tomi')">
+                            <img src="setups/Tomi/5 kep.jpg" alt="KaVRMc Setup 5" class="slide" onclick="openModal('slider-tomi')">
+                        </div>
+                        <button class="slider-btn next-btn" onclick="moveSlide('slider-tomi', 1)">&#10095;</button>
+                    </div>
+
+                    <p><b>CPU:</b> I5-10400F</p>
+                    <p><b>GPU:</b> MSI RTX 3050</p>
+                    <p><b>RAM:</b> Kingston 32 GB DDR4</p>
+                    <p><b>Alaplap:</b> MSI PRO H510M-B</p>
+                    <p><b>Gépház:</b> MSI MAG FORGE 100M</p>
+                    <p><b>Táp:</b> 1ST PLAYER BLACK SIR SR 600W </p>
+                    <p><b>Tárhely:</b></p>
+                    <ul>
+                        <li>Kingston 1TB SNV2S</li>
+                        <li>ST500DM002/li>
+                        <li>GENBIRD 1TB KÜLSŐ VINYÓ</li>
+                    </ul>
+                    <p><b>Eszközök:</b></p>
+                    <ul>
+                        <li>Monitorok:
+                            <ul>
+                                <li>AOC CU34G4 21:9</li>
+                                <li>ASUS VG249</li>
+                            </ul><br>
+                        </li>
+                        <li>Egér: VENTARIS M300</li>
+                        <li>Billentyűzet: ST-MK88</li>
+                        <li>Fejhallgató: JBL TUNE730BT</li>
+                        <li>Keverő: KOMPLETE AUDIO 1</li>
+                        <li>Mikrofon: TRACER STUDIO PRO</li>
+                        <li>Kormány: Logitech DRIVING FORCE GT</li>
+                        <li>Telefon: IPhone 17e</li>
+                        <li>Kontroller: XBOX series x/s kék</li>
+                    </ul>
+                </div>
+
+
             </div>
 
         </div>
@@ -172,6 +224,5 @@
         <button class="modal-btn modal-next" onclick="moveModalSlide(1)">&#10095;</button>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>

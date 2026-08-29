@@ -7,16 +7,23 @@ function closeLoginModal() {
     document.getElementById('errorMsg').style.display = 'none';
 }
 
-function login() {
+function login() 
+{
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
     const errorMsg = document.getElementById('errorMsg');
 
-    if (user === 'admin' && pass === 'admin') {
+    if 
+    (user === 'admin' && pass === 'admin') 
+    {
         window.location.href = 'home.html';
-    } else {
+    } 
+    
+    else 
+    {
         errorMsg.style.display = 'block';
     }
+
 }
 
 
@@ -31,7 +38,8 @@ function moveSlide(sliderId, direction) {
     let activeIndex = -1;
 
     // Megkeressük az éppen látható képet
-    slides.forEach((slide, index) => {
+    slides.forEach((slide, index) => 
+        {
         if (slide.classList.contains('active')) {
             activeIndex = index;
             slide.classList.remove('active');
