@@ -6,10 +6,11 @@
     <title>Értesítések - Rihi Gaming</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpg" href="img/profil.jpg">
-    <!-- EMAILJS SDK BEILLESZTÉSE -->
+
+    <!-- EMAILJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
-        emailjs.init("7sFtBdiCMPosmyRpQ"); // <-- Ide illeszd be a Public Key-t!
+        emailjs.init("7sFtBdiCMPosmyRpQ");
     </script>
 </head>
 <body>
@@ -19,12 +20,19 @@
             <div class="blurred-background"></div>
 
             <!-- VISSZA A FŐOLDALRA GOMB -->
-            <a href="home.html" class="home-button" style="text-decoration: none;">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
-                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-                </svg>
-                <span>Vissza a Főoldalra</span>
-            </a>
+           <div class="top-left-buttons">
+                <a href="home.html" class="home-button" style="text-decoration: none;">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                    </svg>
+                    <span>Vissza a Főoldalra</span>
+                </a>
+
+                 <a href="https://www.paypal.com/paypalme/Rihigaming71" target="_blank" class="support-button">
+                    <span>Támogatás</span>
+                </a>
+
+            </div>
 
             <!-- PROFIL BLOKK -->
             <div class="profile-container-700px">
@@ -49,10 +57,12 @@
                     <h2>Legújabb Értesítések</h2>
                     <p class="notif-subtitle">Kattints a buborékra a tartalom megtekintéséhez!</p>
 
-                    <!-- Értesítési buborékok helye -->
-                    <div class="notifications-list" id="notificationsList"></div>
+                    <!-- Ide kerülnek a YouTube és Twitch kártyák (real-time) -->
+                    <div class="notifications-list" id="notificationsList">
+                        <p style="color:#aaa; text-align:center; padding:20px;">Betöltés...</p>
+                    </div>
 
-                    <!-- E-MAIL FELIRATKOZÁSI DOBOZ -->
+                    <!-- E-MAIL FELIRATKOZÁS (EmailJS) -->
                     <div class="subscribe-box">
                         <h3>✉️ Kérj e-mail értesítést!</h3>
                         <p>Iratkozz fel, hogy azonnal e-mailt kapj, ha új videó vagy live indul!</p>
