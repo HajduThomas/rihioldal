@@ -804,7 +804,7 @@ html, body {
     width: 360px;
     max-width: 100%;
     position: sticky;
-    top: 100px;
+    top: 0px;
 }
 
 .video-box {
