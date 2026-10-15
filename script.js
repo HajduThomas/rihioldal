@@ -112,6 +112,8 @@ function openModal(sliderId) {
     }
 
     modal.style.display = "flex";
+    modalImg.style.opacity = "1";
+    modalImg.style.transform = "translateX(0)";
     modalImg.src = activeSlide.src;
 }
 
@@ -131,16 +133,86 @@ function moveModalSlide(direction) {
 
     const modalImage = document.getElementById("modalImage");
 
-    if (newActiveSlide && modalImage) {
-        modalImage.src = newActiveSlide.src;
+    if (!newActiveSlide || !modalImage) {
+        return;
     }
+
+    // Kifelé csúszás + elhalványulás
+    modalImage.style.opacity = "0";
+    modalImage.style.transform =
+        `translateX(${direction > 0 ? -40 : 40}px)`;
+
+    setTimeout(() => {
+        const showNew = () => {
+            // Az új kép az ellenkező oldalról érkezik
+            modalImage.style.transition = "none";
+            modalImage.style.transform =
+                `translateX(${direction > 0 ? 40 : -40}px)`;
+
+            void modalImage.offsetWidth;
+
+            modalImage.style.transition = "";
+            modalImage.style.opacity = "1";
+            modalImage.style.transform = "translateX(0)";
+        };
+
+        modalImage.onload = showNew;
+        modalImage.src = newActiveSlide.src;
+
+        // Ha a kép már gyorsítótárban van
+        if (modalImage.complete) {
+            showNew();
+        }
+    }, 250);
 }
 
 document.addEventListener("keydown", event => {
+    const modal = document.getElementById("imageModal");
+    const modalOpen = modal && modal.style.display === "flex";
+
     if (event.key === "Escape") {
         closeModal();
     }
+
+    // Nyilak csak akkor, ha a nagyító meg van nyitva
+    if (modalOpen && event.key === "ArrowRight") {
+        moveModalSlide(1);
+    }
+
+    if (modalOpen && event.key === "ArrowLeft") {
+        moveModalSlide(-1);
+    }
 });
+
+// =============================================
+// SETUP LENYÍLÓ MENÜ (több panel is lehet nyitva)
+// =============================================
+
+function setupAccordion() {
+    const headers = document.querySelectorAll(".setup-header");
+
+    // Alapból az első panel (Ricsi) legyen lenyitva
+    const firstBox = document.querySelector(".setup-box");
+
+    if (firstBox) {
+        firstBox.classList.add("open");
+    }
+
+    headers.forEach(header => {
+        function toggle() {
+            header.parentElement.classList.toggle("open");
+        }
+
+        header.addEventListener("click", toggle);
+
+        header.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                toggle();
+            }
+        });
+    });
+}
 
 // =============================================
 // VIDEÓ SLIDER LOGIKA
@@ -641,4 +713,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setupEmailSubscription();
     highlightRules();
+    setupAccordion();
 });

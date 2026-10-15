@@ -28,205 +28,227 @@
 
                 <div class="side-group horizontal">
                     <!-- Átvisz az ertesito.html oldalra jelzőbuborék nélkül -->
-                    <a href="https://www.paypal.com/paypalme/Rihigaming71" class="nav-btn notif-btn">Támogatás</a>
+                    <a href="https://www.paypal.com/paypalme/Rihigaming71" class="nav-btn notif-btn" target="_blank">Támogatás</a>
                     <a href="szabalyzat.html" class="nav-btn">Szabályzat</a>
                 </div>
             </div>
 
-            <!-- SETUP SZÖVEGEK ÉS LAPOZHATÓ GALÉRIÁK -->
+            <!-- SETUP LENYÍLÓ PANELEK -->
             <div class="setup-content">
-                
-                <!-- 1. RICSI SETUPJA -->
-                <div class="setup-box">
-                    <h2>Ricsi setupja:</h2>
-                    
-                    <!-- Képgaléria (slider) -->
-                    <div class="slider" id="slider-ricsi">
-                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-ricsi', -1)">&#10094;</button>
-                        <div class="slider-track">
-                            <img src="setups/Ricsi/1.jpg" alt="Ricsi Setup 1" class="slide active" onclick="openModal('slider-ricsi')">
-                            <img src="setups/Ricsi/2.jpg" alt="Ricsi Setup 2" class="slide" onclick="openModal('slider-ricsi')">
-                            <img src="setups/Ricsi/3.jpg" alt="Ricsi Setup 3" class="slide" onclick="openModal('slider-ricsi')">
-                            <img src="setups/Ricsi/4.jpg" alt="Ricsi Setup 4" class="slide" onclick="openModal('slider-ricsi')">
-                            <img src="setups/Ricsi/5.jpg" alt="Ricsi Setup 5" class="slide" onclick="openModal('slider-ricsi')">
-                            <img src="setups/Ricsi/6.jpg" alt="Ricsi Setup 6" class="slide" onclick="openModal('slider-ricsi')">
-                            <img src="setups/Ricsi/7.jpg" alt="Ricsi Setup 7" class="slide" onclick="openModal('slider-ricsi')">
-                        </div>
-                        <button class="slider-btn next-btn" onclick="moveSlide('slider-ricsi', 1)">&#10095;</button>
-                    </div>
 
-                    <p><b>CPU:</b> Intel® Core™ i9-11900K</p>
-                    <p><b>GPU:</b> ASUS TUF Gaming  B560 Plus WIFI</p>
-                    <p><b>RAM:</b> 32GB DDR4</p>
-                    <p><b>Alaplap:</b> ASUS PRIME H510M-E R2.0</p>
-                    <p><b>CPU hűtő:</b> ID-Cooling SE-206-XT</p>
-                    <p><b>Gépház:</b> X3 MESH - MONTECH</p>
-                    <p><b>Tárhely:</b></p>
-                    <ul>
-                        <li>Samsung 840 EVO 120GB</li>
-                        <li>Kingston NV2 1TB</li>
-                        <li>Seagate BarraCuda 2TB HDD</li>
-                    </ul>
-                    <p><b>Táp:</b> GIGABYTE GP-P550SS 550W</p>
-                    <p><b>Eszközök:</b></p>
-                    <ul>
-                        <li>Monitorok:
+                <!-- 1. RICSI SETUPJA (alapból nyitva) -->
+                <div class="setup-box open">
+                    <h2 class="setup-header" tabindex="0">Ricsi setupja</h2>
+
+                    <div class="setup-body">
+                        <div class="setup-body-inner">
+
+                            <div class="slider" id="slider-ricsi">
+                                <button class="slider-btn prev-btn" onclick="moveSlide('slider-ricsi', -1)">&#10094;</button>
+                                <div class="slider-track">
+                                    <img src="setups/Ricsi/1.jpg" alt="Ricsi Setup 1" class="slide active" onclick="openModal('slider-ricsi')">
+                                    <img src="setups/Ricsi/2.jpg" alt="Ricsi Setup 2" class="slide" onclick="openModal('slider-ricsi')">
+                                    <img src="setups/Ricsi/3.jpg" alt="Ricsi Setup 3" class="slide" onclick="openModal('slider-ricsi')">
+                                    <img src="setups/Ricsi/4.jpg" alt="Ricsi Setup 4" class="slide" onclick="openModal('slider-ricsi')">
+                                    <img src="setups/Ricsi/5.jpg" alt="Ricsi Setup 5" class="slide" onclick="openModal('slider-ricsi')">
+                                    <img src="setups/Ricsi/6.jpg" alt="Ricsi Setup 6" class="slide" onclick="openModal('slider-ricsi')">
+                                    <img src="setups/Ricsi/7.jpg" alt="Ricsi Setup 7" class="slide" onclick="openModal('slider-ricsi')">
+                                </div>
+                                <button class="slider-btn next-btn" onclick="moveSlide('slider-ricsi', 1)">&#10095;</button>
+                            </div>
+
+                            <p><b>CPU:</b> Intel® Core™ i9-11900K</p>
+                            <p><b>GPU:</b> ASUS TUF Gaming  B560 Plus WIFI</p>
+                            <p><b>RAM:</b> 32GB DDR4</p>
+                            <p><b>Alaplap:</b> ASUS PRIME H510M-E R2.0</p>
+                            <p><b>CPU hűtő:</b> ID-Cooling SE-206-XT</p>
+                            <p><b>Gépház:</b> X3 MESH - MONTECH</p>
+                            <p><b>Tárhely:</b></p>
                             <ul>
-                                <li>SAMSUNG 27" Odyssey G3 FHD 165Hz (LS27AG32x)</li>
-                                <li>Samsung LC24F390FHUXEN 24”</li>
-                                <li>Samsung odyssey g5 27’’ (LS27CG552EUXEN) 2K 165Hz</li>
-                                <li>LG 22" Full HD IPS LED Monitor 22MP68VQ-P</li>
+                                <li>Samsung 840 EVO 120GB</li>
+                                <li>Kingston NV2 1TB</li>
+                                <li>Seagate BarraCuda 2TB HDD</li>
                             </ul>
-                        </li>
-                        <li>Egér: iMICE T90</li>
-                        <li>Billentyűzet: Logitech G-PRO</li>
-                        <li>Fejhallgató: Arctis Pro Wireless - SteelSeries</li>
-                        <li>Keverő: FIFINE SC3</li>
-                        <li>Mikrofon: Superlux E205 FEKETE!</li>
-                        <li>Kormány: Logitech G920</li>
-                        <li>Zöld háttér: Elgato-Green Screen</li>
-                        <li>Fényképező: Sony Alpha ZVE10 II</li>
-                        <li>DJI Mic Mini DUO</li>
-                        <li>Capture card: Elgato HD60 X</li>
-                        <li>Gopprok: GoPro HERO12 Black, GoPro HERO10 Black</li>
-                    </ul>
+                            <p><b>Táp:</b> GIGABYTE GP-P550SS 550W</p>
+                            <p><b>Eszközök:</b></p>
+                            <ul>
+                                <li>Monitorok:
+                                    <ul>
+                                        <li>SAMSUNG 27" Odyssey G3 FHD 165Hz (LS27AG32x)</li>
+                                        <li>Samsung LC24F390FHUXEN 24”</li>
+                                        <li>Samsung odyssey g5 27’’ (LS27CG552EUXEN) 2K 165Hz</li>
+                                        <li>LG 22" Full HD IPS LED Monitor 22MP68VQ-P</li>
+                                    </ul>
+                                </li>
+                                <li>Egér: iMICE T90</li>
+                                <li>Billentyűzet: Logitech G-PRO</li>
+                                <li>Fejhallgató: Arctis Pro Wireless - SteelSeries</li>
+                                <li>Keverő: FIFINE SC3</li>
+                                <li>Mikrofon: Superlux E205 FEKETE!</li>
+                                <li>Kormány: Logitech G920</li>
+                                <li>Zöld háttér: Elgato-Green Screen</li>
+                                <li>Fényképező: Sony Alpha ZVE10 II</li>
+                                <li>DJI Mic Mini DUO</li>
+                                <li>Capture card: Elgato HD60 X</li>
+                                <li>Gopprok: GoPro HERO12 Black, GoPro HERO10 Black</li>
+                            </ul>
+
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 2. MÁRK SETUPJA -->
                 <div class="setup-box">
-                    <h2>Márk setupja:</h2>
-                    
-                    <div class="slider" id="slider-mark">
-                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-mark', -1)">&#10094;</button>
-                        <div class="slider-track">
-                            <img src="setups/Márk/1.jpg" alt="Márk Setup 1" class="slide active" onclick="openModal('slider-mark')">
-                        </div>
-                        <button class="slider-btn next-btn" onclick="moveSlide('slider-mark', 1)">&#10095;</button>
-                    </div>
+                    <h2 class="setup-header" tabindex="0">Márk setupja</h2>
 
-                    <p><b>CPU:</b> AMD Ryzen 5 5600X</p>
-                    <p><b>GPU:</b> PALIT GameRock 3080 10GB</p>
-                    <p><b>RAM:</b> 2x16GB kingston fury DDR4 3200mhz</p>
-                    <p><b>Alaplap:</b> Asus tuf Gaming B450M Plus II</p>
-                    <p><b>CPU hűtő:</b> Arctic liquid freeze II 240</p>
-                    <p><b>Gépház:</b> Jonsbo MOD3</p>
-                    <p><b>Táp:</b> MSI MAG A850GL PCIE5</p>
-                    <p><b>Eszközök:</b></p>
-                    <ul>
-                        <li>Monitorok:
+                    <div class="setup-body">
+                        <div class="setup-body-inner">
+
+                            <div class="slider" id="slider-mark">
+                                <button class="slider-btn prev-btn" onclick="moveSlide('slider-mark', -1)">&#10094;</button>
+                                <div class="slider-track">
+                                    <img src="setups/Márk/1.jpg" alt="Márk Setup 1" class="slide active" onclick="openModal('slider-mark')">
+                                </div>
+                                <button class="slider-btn next-btn" onclick="moveSlide('slider-mark', 1)">&#10095;</button>
+                            </div>
+
+                            <p><b>CPU:</b> AMD Ryzen 5 5600X</p>
+                            <p><b>GPU:</b> PALIT GameRock 3080 10GB</p>
+                            <p><b>RAM:</b> 2x16GB kingston fury DDR4 3200mhz</p>
+                            <p><b>Alaplap:</b> Asus tuf Gaming B450M Plus II</p>
+                            <p><b>CPU hűtő:</b> Arctic liquid freeze II 240</p>
+                            <p><b>Gépház:</b> Jonsbo MOD3</p>
+                            <p><b>Táp:</b> MSI MAG A850GL PCIE5</p>
+                            <p><b>Eszközök:</b></p>
                             <ul>
-                                <li>Samsung odyssey G5 EUXEN 32” curved 2k 165hz</li>
-                                <li>Random samsung 2. Monditor</li>
+                                <li>Monitorok:
+                                    <ul>
+                                        <li>Samsung odyssey G5 EUXEN 32” curved 2k 165hz</li>
+                                        <li>Random samsung 2. Monditor</li>
+                                    </ul>
+                                </li>
+                                <li>Egér: Razer basilisk V3</li>
+                                <li>Billentyűzet: Razer huntsman TE</li>
+                                <li>Fejhallgató: HyperX cloud s III Wireless</li>
+                                <li>Mikrofon: Audio-Technica AT2020</li>
+                                <li>Kormány: Logitech g920</li>
+                                <li>Fényképező: Sony a6700 kitlencsével</li>
+                                <li>Mikrofon állvány: Maono</li>
+                                <li>Keverő: M-AUDIO M-TRACK DUO</li>
+                                <li>Gopro: Hero 12</li>
                             </ul>
-                        </li>
-                        <li>Egér: Razer basilisk V3</li>
-                        <li>Billentyűzet: Razer huntsman TE</li>
-                        <li>Fejhallgató: HyperX cloud s III Wireless</li>
-                        <li>Mikrofon: Audio-Technica AT2020</li>
-                        <li>Kormány: Logitech g920</li>
-                        <li>Fényképező: Sony a6700 kitlencsével</li>
-                        <li>Mikrofon állvány: Maono</li>
-                        <li>Keverő: M-AUDIO M-TRACK DUO</li>
-                        <li>Gopro: Hero 12</li>
-                    </ul>
+
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 3. KAVRMC SETUPJA -->
-                 <div class="setup-box">
-                    <h2>KaVRMc setupja:</h2>
-                    
-                    <div class="slider" id="slider-kavrmc">
-                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-kavrmc', -1)">&#10094;</button>
-                        <div class="slider-track">
-                            <img src="setups/KaVRMc/2.png" alt="KaVRMc Setup 1" class="slide active" onclick="openModal('slider-kavrmc')">
-                            <img src="setups/KaVRMc/4.png" alt="KaVRMc Setup 4" class="slide" onclick="openModal('slider-kavrmc')">
-                            <img src="setups/KaVRMc/5.png" alt="KaVRMc Setup 5" class="slide" onclick="openModal('slider-kavrmc')">
-                            <img src="setups/KaVRMc/6.png" alt="KaVRMc Setup 6" class="slide" onclick="openModal('slider-kavrmc')">
-                        </div>
-                        <button class="slider-btn next-btn" onclick="moveSlide('slider-kavrmc', 1)">&#10095;</button>
-                    </div>
-
-                    <p><b>CPU:</b> AMD Ryzen 7 5700X</p>
-                    <p><b>GPU:</b> AMD Radeon RX580</p>
-                    <p><b>RAM:</b> Corsair vengeance 32GB DDR4</p>
-                    <p><b>Alaplap:</b> Gigabyte A520 M KV2</p>
-                    <p><b>CPU hűtő:</b> Artic Freezer 36A RGB</p>
-                    <p><b>Gépház:</b> FSP CMT192</p>
-                    <p><b>Táp:</b> FSP Hydro K Pro 750W ATX3.0 80 PLUS Bronze</p>
-                    <p><b>Tárhely:</b></p>
-                    <ul>
-                        <li>Kingston 120GB</li>
-                        <li>Kingston HDD 1TB</li>
-                        <li>Samsung 500GB</li>
-                    </ul>
-                    <p><b>Eszközök:</b></p>
-                    <ul>
-                        <li>Monitorok:
-                            <ul>
-                                <li>Samsung 24" S24D330</li>
-                                <li>Acer V196L 4:3</li>
-                            </ul>
-                        </li>
-                        <li>Egér: SteelSeries Rival 3 wireless</li>
-                        <li>Billentyűzet: Gwings spider GW995MKB</li>
-                        <li>Fejhallgató: HyperX Cloud stringer core 7.1 wireless</li>
-                        <li>Mikrofon: Yenkee YMC 1030</li>
-                        <li>Kormány: Qsmart GT900</li>
-                        <li>Zöld háttér: Temus szar</li>
-                        <li>Fényképező: Canon EOS 1200d</li>
-                        <li>egérpad: GX scorpion</li>
-                    </ul>
-                </div>
-
-
-
-                <!-- 3. Tomi SETUPJA -->
                 <div class="setup-box">
-                    <h2>Tomi setupja:</h2>
-                    
-                    <div class="slider" id="slider-tomi">
-                        <button class="slider-btn prev-btn" onclick="moveSlide('slider-tomi', -1)">&#10094;</button>
-                        <div class="slider-track">
-                            <img src="setups/Tomi/1 kep.jpg" alt="KaVRMc Setup 1" class="slide active" onclick="openModal('slider-tomi')">
-                            <img src="setups/Tomi/2 kep.jpg" alt="KaVRMc Setup 2" class="slide" onclick="openModal('slider-tomi')">
-                            <img src="setups/Tomi/3 kep.jpg" alt="KaVRMc Setup 3" class="slide" onclick="openModal('slider-tomi')">
-                            <img src="setups/Tomi/4 kep.jpg" alt="KaVRMc Setup 4" class="slide" onclick="openModal('slider-tomi')">
-                            <img src="setups/Tomi/5 kep.jpg" alt="KaVRMc Setup 5" class="slide" onclick="openModal('slider-tomi')">
-                        </div>
-                        <button class="slider-btn next-btn" onclick="moveSlide('slider-tomi', 1)">&#10095;</button>
-                    </div>
+                    <h2 class="setup-header" tabindex="0">KaVRMc setupja</h2>
 
-                    <p><b>CPU:</b> I5-10400F</p>
-                    <p><b>GPU:</b> MSI RTX 3050</p>
-                    <p><b>RAM:</b> Kingston 32 GB DDR4</p>
-                    <p><b>Alaplap:</b> MSI PRO H510M-B</p>
-                    <p><b>Gépház:</b> MSI MAG FORGE 100M</p>
-                    <p><b>Táp:</b> 1ST PLAYER BLACK SIR SR 600W </p>
-                    <p><b>Tárhely:</b></p>
-                    <ul>
-                        <li>Kingston SA400s37480G</li>
-                        <li>Kingston 1TB SNV2S</li>
-                        <li>ST500DM002</li>
-                        <li>GENBIRD 1TB KÜLSŐ VINYÓ</li>
-                    </ul>
-                    <p><b>Eszközök:</b></p>
-                    <ul>
-                        <li>Monitorok:
+                    <div class="setup-body">
+                        <div class="setup-body-inner">
+
+                            <div class="slider" id="slider-kavrmc">
+                                <button class="slider-btn prev-btn" onclick="moveSlide('slider-kavrmc', -1)">&#10094;</button>
+                                <div class="slider-track">
+                                    <img src="setups/KaVRMc/2.png" alt="KaVRMc Setup 1" class="slide active" onclick="openModal('slider-kavrmc')">
+                                    <img src="setups/KaVRMc/4.png" alt="KaVRMc Setup 4" class="slide" onclick="openModal('slider-kavrmc')">
+                                    <img src="setups/KaVRMc/5.png" alt="KaVRMc Setup 5" class="slide" onclick="openModal('slider-kavrmc')">
+                                    <img src="setups/KaVRMc/6.png" alt="KaVRMc Setup 6" class="slide" onclick="openModal('slider-kavrmc')">
+                                </div>
+                                <button class="slider-btn next-btn" onclick="moveSlide('slider-kavrmc', 1)">&#10095;</button>
+                            </div>
+
+                            <p><b>CPU:</b> AMD Ryzen 7 5700X</p>
+                            <p><b>GPU:</b> AMD Radeon RX580</p>
+                            <p><b>RAM:</b> Corsair vengeance 32GB DDR4</p>
+                            <p><b>Alaplap:</b> Gigabyte A520 M KV2</p>
+                            <p><b>CPU hűtő:</b> Artic Freezer 36A RGB</p>
+                            <p><b>Gépház:</b> FSP CMT192</p>
+                            <p><b>Táp:</b> FSP Hydro K Pro 750W ATX3.0 80 PLUS Bronze</p>
+                            <p><b>Tárhely:</b></p>
                             <ul>
-                                <li>AOC CU34G4 21:9</li>
-                                <li>ASUS VG249</li>
-                            </ul><br>
-                        </li>
-                        <li>Egér: VENTARIS M300</li>
-                        <li>Billentyűzet: ST-MK88</li>
-                        <li>Fejhallgató: JBL TUNE730BT</li>
-                        <li>Keverő: KOMPLETE AUDIO 1</li>
-                        <li>Mikrofon: TRACER STUDIO PRO</li>
-                        <li>Kormány: Logitech DRIVING FORCE GT</li>
-                        <li>Telefon: IPhone 17e</li>
-                        <li>Kontroller: XBOX series x/s kék</li>
-                    </ul>
+                                <li>Kingston 120GB</li>
+                                <li>Kingston HDD 1TB</li>
+                                <li>Samsung 500GB</li>
+                            </ul>
+                            <p><b>Eszközök:</b></p>
+                            <ul>
+                                <li>Monitorok:
+                                    <ul>
+                                        <li>Samsung 24" S24D330</li>
+                                        <li>Acer V196L 4:3</li>
+                                    </ul>
+                                </li>
+                                <li>Egér: SteelSeries Rival 3 wireless</li>
+                                <li>Billentyűzet: Gwings spider GW995MKB</li>
+                                <li>Fejhallgató: HyperX Cloud stringer core 7.1 wireless</li>
+                                <li>Mikrofon: Yenkee YMC 1030</li>
+                                <li>Kormány: Qsmart GT900</li>
+                                <li>Zöld háttér: Temus szar</li>
+                                <li>Fényképező: Canon EOS 1200d</li>
+                                <li>egérpad: GX scorpion</li>
+                            </ul>
+
+                        </div>
+                    </div>
                 </div>
+
+                <!-- 4. TOMI SETUPJA -->
+                <div class="setup-box">
+                    <h2 class="setup-header" tabindex="0">Tomi setupja</h2>
+
+                    <div class="setup-body">
+                        <div class="setup-body-inner">
+
+                            <div class="slider" id="slider-tomi">
+                                <button class="slider-btn prev-btn" onclick="moveSlide('slider-tomi', -1)">&#10094;</button>
+                                <div class="slider-track">
+                                    <img src="setups/Tomi/1 kep.jpg" alt="Tomi Setup 1" class="slide active" onclick="openModal('slider-tomi')">
+                                    <img src="setups/Tomi/2 kep.jpg" alt="Tomi Setup 2" class="slide" onclick="openModal('slider-tomi')">
+                                    <img src="setups/Tomi/3 kep.jpg" alt="Tomi Setup 3" class="slide" onclick="openModal('slider-tomi')">
+                                    <img src="setups/Tomi/4 kep.jpg" alt="Tomi Setup 4" class="slide" onclick="openModal('slider-tomi')">
+                                    <img src="setups/Tomi/5 kep.jpg" alt="Tomi Setup 5" class="slide" onclick="openModal('slider-tomi')">
+                                </div>
+                                <button class="slider-btn next-btn" onclick="moveSlide('slider-tomi', 1)">&#10095;</button>
+                            </div>
+
+                            <p><b>CPU:</b> I5-10400F</p>
+                            <p><b>GPU:</b> MSI RTX 3050</p>
+                            <p><b>RAM:</b> Kingston 32 GB DDR4</p>
+                            <p><b>Alaplap:</b> MSI PRO H510M-B</p>
+                            <p><b>Gépház:</b> MSI MAG FORGE 100M</p>
+                            <p><b>Táp:</b> 1ST PLAYER BLACK SIR SR 600W </p>
+                            <p><b>Tárhely:</b></p>
+                            <ul>
+                                <li>Kingston SA400s374</li>
+                                <li>Kingston 1TB SNV2S</li>
+                                <li>ST500DM002</li>
+                                <li>GENBIRD 1TB KÜLSŐ VINYÓ</li>
+                            </ul>
+                            <p><b>Eszközök:</b></p>
+                            <ul>
+                                <li>Monitorok:
+                                    <ul>
+                                        <li>AOC CU34G4 21:9</li>
+                                        <li>ASUS VG249</li>
+                                    </ul>
+                                </li>
+                                <li>Egér: VENTARIS M300</li>
+                                <li>Billentyűzet: ST-MK88</li>
+                                <li>Fejhallgató: JBL TUNE730BT</li>
+                                <li>Keverő: KOMPLETE AUDIO 1</li>
+                                <li>Mikrofon: TRACER STUDIO PRO</li>
+                                <li>Kormány: Logitech DRIVING FORCE GT</li>
+                                <li>Telefon: IPhone 17e</li>
+                                <li>Kontroller: XBOX series x/s kék</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
