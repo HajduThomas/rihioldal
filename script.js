@@ -709,7 +709,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateNotifications();
 
     // 45 másodpercenként új lekérés.
-    setInterval(updateNotifications, 45000);
+    setInterval(updateNotifications, 15000);
 
     setupEmailSubscription();
     highlightRules();
