@@ -483,6 +483,29 @@ html, body {
     height: 20px;
 }
 
+/* Szöveg középre igazítva a panelek belsejében */
+.setup-body-inner {
+    text-align: center;
+}
+
+.setup-body-inner ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.setup-body-inner li {
+    margin: 4px 0;
+}
+
+.setup-body-inner li > ul {
+    margin: 6px 0 10px;
+}
+
+.setup-body-inner li > ul li {
+    opacity: 0.85;
+}
+
 /* SLIDER */
 .slider {
     position: relative;
@@ -562,11 +585,10 @@ html, body {
 }
 
 .modal-content {
-    max-width: 85%;
-    max-height: 85%;
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    width: 90vw;
+    height: 88vh;
     object-fit: contain;
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.2));
     opacity: 1;
     transition: opacity 0.25s ease, transform 0.25s ease;
 }
@@ -1232,4 +1254,591 @@ div[class*="card"], .info-box {
     .setup-body-inner {
         padding: 0 14px;
     }
+}
+
+/* ==========================================
+   MOBIL NÉZET – LENYÍLÓ NAVIGÁCIÓS MENÜ
+   ========================================== */
+.menu-wrap,
+.menu-toggle,
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .profile-container-700px {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin-top: 25px;
+        z-index: 200 !important;
+    }
+
+    /* Eredeti gombcsoportok elrejtése, helyettük a lenyíló panel van */
+    .profile-container-700px .side-group.horizontal {
+        display: none;
+    }
+
+    /* Menü gomb a logó alján, a panel ehhez tartozik */
+    .menu-wrap {
+        order: 2;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 20px;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 0.95em;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 20px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        box-sizing: border-box;
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .menu-toggle:hover,
+    .profile-container-700px.menu-open .menu-toggle {
+        background: white;
+        color: black;
+    }
+
+    .menu-toggle .menu-icon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .profile-container-700px.menu-open .menu-toggle .menu-icon {
+        transform: rotate(90deg);
+    }
+
+    /* Logó legfelül, középen */
+    .profile-container-700px > a {
+        order: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Egyben lévő lenyíló panel */
+    .mobile-menu {
+        position: static;
+        width: 210px;
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px;
+        background: rgba(0, 0, 0, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 18px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
+    }
+
+    .profile-container-700px.menu-open .mobile-menu {
+        display: flex;
+        animation: menuDrop 0.25s ease;
+    }
+
+    .mobile-menu .menu-link {
+        display: block;
+        padding: 12px 14px;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        font-size: 0.95em;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border-radius: 12px;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mobile-menu .menu-link.active {
+        background: rgba(255, 255, 255, 0.18);
+    }
+
+    .mobile-menu .menu-link:hover {
+        background: white;
+        color: black;
+    }
+}
+
+@keyframes menuDrop {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes menuDropCenter {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* ==========================================
+   TWITCH KLIPPEK + TWITCH CSATORNA SZEGMENS
+   ========================================== */
+.video-slide iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #000;
+}
+
+.clip-thumb {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    overflow: hidden;
+    background: #000;
+}
+
+.clip-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.clip-thumb:hover img,
+.clip-thumb:focus-visible img {
+    transform: scale(1.04);
+    filter: brightness(0.8);
+}
+
+.clip-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    box-sizing: border-box;
+    font-size: 28px;
+    color: white;
+    background: rgba(145, 70, 255, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, background 0.2s ease;
+    pointer-events: none;
+}
+
+.clip-thumb:hover .clip-play {
+    transform: translate(-50%, -50%) scale(1.12);
+    background: rgba(145, 70, 255, 1);
+}
+
+.clip-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30px 60px 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.95em;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+}
+
+.clip-status {
+    width: 100%;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    line-height: 1.8;
+}
+
+.clip-status a {
+    color: #bf94ff;
+}
+
+/* Twitch csatorna hivatkozás */
+.twitch-section {
+    position: relative;
+    z-index: 10;
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px 50px;
+    box-sizing: border-box;
+}
+
+.twitch-link-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 18px 25px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 5px solid #9146ff;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.twitch-link-box:hover {
+    transform: translateY(-3px);
+    background: rgba(145, 70, 255, 0.25);
+    box-shadow: 0 12px 30px rgba(145, 70, 255, 0.35);
+}
+
+.twitch-link-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    flex-shrink: 0;
+}
+
+.twitch-link-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-grow: 1;
+    text-align: left;
+    min-width: 0;
+}
+
+.twitch-link-name {
+    font-size: 1.15rem;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.twitch-link-sub {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.twitch-link-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+    .clip-play {
+        width: 56px;
+        height: 56px;
+        font-size: 22px;
+    }
+
+    .clip-title {
+        padding: 24px 16px 10px;
+        font-size: 0.85em;
+    }
+
+    .twitch-section {
+        padding: 0 10px 40px;
+    }
+
+    .twitch-link-box {
+        padding: 14px 16px;
+        gap: 14px;
+    }
+
+    .twitch-link-avatar {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+/* ==========================================
+   MOBIL / TABLET – MINDEN OLDALRA
+   ========================================== */
+img, video, iframe {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    /* Főoldal elrendezés: egymás alatt, teljes szélességben */
+    .main-layout {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        gap: 16px;
+        box-sizing: border-box;
+    }
+
+    .home-content,
+    .video-sidebar {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .info-box,
+    .social-box {
+        padding: 18px;
+    }
+
+    .info-box h2,
+    .social-box h2,
+    .video-box h2,
+    .twitch-box h2 {
+        font-size: 1.3rem;
+    }
+
+    .social-btn {
+        padding: 10px 16px;
+        font-size: 0.95em;
+    }
+
+    #dynamic-text {
+        font-size: 2.2em;
+        text-align: center;
+    }
+
+    .bottom-content {
+        padding: 12px;
+    }
+
+    /* Klippek */
+    .video-box {
+        padding: 16px;
+    }
+
+    .video-track-container {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .video-btn {
+        font-size: 16px;
+        padding: 8px 11px;
+    }
+
+    .v-prev { left: 6px; }
+    .v-next { right: 6px; }
+
+    /* Képlapozó (setup) */
+    .slider {
+        height: 210px;
+    }
+
+    .slider-btn {
+        padding: 7px 11px;
+    }
+
+    /* Kinagyított kép */
+    .modal-content {
+        width: 96vw;
+        height: 80vh;
+    }
+
+    .modal-btn {
+        font-size: 20px;
+        padding: 10px 14px;
+    }
+
+    .modal-prev { left: 8px; }
+    .modal-next { right: 8px; }
+
+    .close-modal {
+        top: 10px;
+        right: 18px;
+        font-size: 36px;
+    }
+
+    /* Értesítések oldal */
+    .notifications-wrapper {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .notifications-box {
+        padding: 18px;
+    }
+
+    .notifications-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .notif-card {
+        flex-wrap: wrap;
+        padding: 14px;
+    }
+
+    .notif-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .subscribe-form {
+        flex-direction: column;
+    }
+
+    .subscribe-btn {
+        width: 100%;
+    }
+
+    /* Szabályzat oldal */
+    .rules-wrapper {
+        width: 100%;
+        margin: 20px auto;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .rule-title {
+        flex-wrap: wrap;
+    }
+
+    /* Bejelentkező ablak */
+    .login-box {
+        width: min(280px, 90vw);
+    }
+
+    /* Bal felső gombok ne fedjék a tartalmat */
+    .top-left-buttons {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 12px 12px 0;
+    }
+
+    .admin-login-trigger {
+        top: 12px;
+        left: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .info-box,
+    .social-box,
+    .video-box {
+        padding: 14px;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .slider {
+        height: 180px;
+    }
+
+    .setup-header {
+        font-size: 1.05em;
+    }
+}
+
+#tamogatas-ablak {
+    box-sizing: border-box;
+    width: min(440px, 90vw);
+    padding: 28px;
+    border: 1px solid #9146ff;
+    border-radius: 16px;
+    background: #100c20;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 35px rgba(145, 70, 255, 0.35);
+}
+
+#tamogatas-ablak::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+}
+
+#tamogatas-ablak h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+
+#tamogatas-ablak p {
+    color: #d3cde0;
+    line-height: 1.5;
+}
+
+.tamogatas-gombok {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 24px;
+}
+
+#tamogatas-igen,
+#tamogatas-nem {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#tamogatas-igen {
+    background: #9146ff;
+}
+
+#tamogatas-nem {
+    background: #343044;
+}
+
+#tamogatas-igen:hover {
+    background: #772ce8;
+}
+
+#tamogatas-nem:hover {
+    background: #49425d;
+}
+
+#tamogatas-igen:focus-visible,
+#tamogatas-nem:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
 }
